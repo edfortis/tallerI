@@ -1,0 +1,124 @@
+object DMtintoreria: TDMtintoreria
+  OldCreateOrder = False
+  Height = 227
+  Width = 641
+  object Conexion: TADOConnection
+    Connected = True
+    ConnectionString = 
+      'Provider=MSDASQL.1;Persist Security Info=False;User ID=root;Data' +
+      ' Source=tintoreria;Initial Catalog=tintoreria;'
+    LoginPrompt = False
+    Left = 64
+    Top = 64
+  end
+  object DSQUsuario: TDataSource
+    DataSet = QClientes
+    Left = 136
+    Top = 80
+  end
+  object QClientes: TADOQuery
+    Connection = Conexion
+    Parameters = <>
+    Left = 136
+    Top = 32
+  end
+  object QGeneral: TADOQuery
+    Connection = Conexion
+    Parameters = <>
+    Left = 200
+    Top = 32
+  end
+  object TEmpleado: TADOTable
+    Active = True
+    Connection = Conexion
+    CursorType = ctStatic
+    LockType = ltReadOnly
+    OnCalcFields = TEmpleadoCalcFields
+    TableName = 'empleado'
+    Left = 256
+    Top = 32
+    object TEmpleadoidEmpleado: TIntegerField
+      FieldName = 'idEmpleado'
+      Visible = False
+    end
+    object TEmpleadonombre: TWideStringField
+      DisplayLabel = 'Nombre'
+      DisplayWidth = 18
+      FieldName = 'nombre'
+      Visible = False
+      Size = 45
+    end
+    object TEmpleadoaPaterno: TWideStringField
+      DisplayLabel = 'Apellido Paterno'
+      DisplayWidth = 15
+      FieldName = 'aPaterno'
+      Visible = False
+      Size = 45
+    end
+    object TEmpleadoaMaterno: TWideStringField
+      DisplayLabel = 'Apellido Materno'
+      DisplayWidth = 17
+      FieldName = 'aMaterno'
+      Visible = False
+      Size = 45
+    end
+    object TEmpleadonombreCompleto: TWideStringField
+      DisplayLabel = 'Nombre Empleado'
+      DisplayWidth = 24
+      FieldKind = fkCalculated
+      FieldName = 'nombreCompleto'
+      Calculated = True
+    end
+    object TEmpleadocorreoElectronico: TWideStringField
+      DisplayLabel = 'Correo Electronico'
+      DisplayWidth = 32
+      FieldName = 'correoElectronico'
+      Size = 45
+    end
+    object TEmpleadotelefono: TWideStringField
+      DisplayLabel = 'Tel'#233'fono'
+      DisplayWidth = 22
+      FieldName = 'telefono'
+      Size = 45
+    end
+    object TEmpleadosexo: TWideStringField
+      DisplayLabel = 'Sexo'
+      DisplayWidth = 5
+      FieldName = 'sexo'
+      Visible = False
+      Size = 2
+    end
+  end
+  object DSTEmpleado: TDataSource
+    DataSet = TEmpleado
+    Left = 256
+    Top = 88
+  end
+  object RvStados: TRvDataSetConnection
+    RuntimeVisibility = rtDeveloper
+    DataSet = TEmpleado
+    Left = 352
+    Top = 40
+  end
+  object RvProject1: TRvProject
+    LoadDesigner = True
+    Left = 352
+    Top = 104
+  end
+  object RvRenderPDF1: TRvRenderPDF
+    DisplayName = 'Adobe Acrobat (PDF)'
+    FileExtension = '*.pdf'
+    DocInfo.Creator = 'Rave Reports (http://www.nevrona.com/rave)'
+    DocInfo.Producer = 'Nevrona Designs'
+    Left = 424
+    Top = 40
+  end
+  object RvRenderText1: TRvRenderText
+    DisplayName = 'Plain Text (TXT)'
+    FileExtension = '*.txt'
+    CPI = 10.000000000000000000
+    LPI = 6.000000000000000000
+    Left = 488
+    Top = 40
+  end
+end

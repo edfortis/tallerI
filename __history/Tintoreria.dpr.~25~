@@ -1,0 +1,30 @@
+program Tintoreria;
+
+uses
+  Forms,
+  ULogin in 'ULogin.pas' {FLogin},
+  UDMtintoreria in 'UDMtintoreria.pas' {DMtintoreria: TDataModule},
+  UPrincipal in 'UPrincipal.pas' {FPrincipal},
+  UCatalogo in 'UCatalogo.pas' {FCatalogo},
+  UAgregarEmpleado in 'UAgregarEmpleado.pas' {UAgregar},
+  UUsuario in 'UUsuario.pas' {FUsuario},
+  UAgregarUsuario in 'UAgregarUsuario.pas' {FAgregarUsuario},
+  UCliente in 'UCliente.pas' {FCliente},
+  UServicio in 'UServicio.pas' {FServicioAgregar},
+  UAgregarServicio in 'UAgregarServicio.pas' {Form2};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TDMtintoreria, DMtintoreria);
+  Application.CreateForm(TFPrincipal, FPrincipal);
+  Application.CreateForm(TFServicioAgregar, FServicioAgregar);
+  Application.CreateForm(TForm2, Form2);
+  //Application.CreateForm(TFCliente, FCliente);
+  //Application.CreateForm(TFAgregarUsuario, FAgregarUsuario);
+  //Application.CreateForm(TFUsuario, FUsuario);
+  //Application.CreateForm(TUAgregar, UAgregar);
+  Application.Run;
+end.

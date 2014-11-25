@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2014/11/23 15:30:04.399.pas,C:\Users\Eduardo\Documents\RAD Studio\Projects\proyectov1Tintoreria\Unit1.pas=C:\Users\Eduardo\Documents\RAD Studio\Projects\proyectov1Tintoreria\UAgregarEmpleado.pas</Transaction>
+    <Transaction>2014/11/23 15:30:04.435.dfm,C:\Users\Eduardo\Documents\RAD Studio\Projects\proyectov1Tintoreria\Unit1.dfm=C:\Users\Eduardo\Documents\RAD Studio\Projects\proyectov1Tintoreria\UAgregarEmpleado.dfm</Transaction>
+    <Transaction>2014/11/23 21:31:19.565.pas,C:\Users\Eduardo\Documents\RAD Studio\Projects\proyectov1Tintoreria\Unit1.pas=C:\Users\Eduardo\Documents\RAD Studio\Projects\proyectov1Tintoreria\UUsuario.pas</Transaction>
+    <Transaction>2014/11/23 21:31:19.565.dfm,C:\Users\Eduardo\Documents\RAD Studio\Projects\proyectov1Tintoreria\Unit1.dfm=C:\Users\Eduardo\Documents\RAD Studio\Projects\proyectov1Tintoreria\UUsuario.dfm</Transaction>
+    <Transaction>2014/11/23 22:20:57.918.pas,C:\Users\Eduardo\Documents\RAD Studio\Projects\proyectov1Tintoreria\Unit1.pas=C:\Users\Eduardo\Documents\RAD Studio\Projects\proyectov1Tintoreria\UAgregarUsuario.pas</Transaction>
+    <Transaction>2014/11/23 22:20:57.918.dfm,C:\Users\Eduardo\Documents\RAD Studio\Projects\proyectov1Tintoreria\Unit1.dfm=C:\Users\Eduardo\Documents\RAD Studio\Projects\proyectov1Tintoreria\UAgregarUsuario.dfm</Transaction>
+    <Transaction>2014/11/24 08:37:24.981.pas,C:\Users\Eduardo\Documents\RAD Studio\Projects\proyectov1Tintoreria\Unit1.pas=C:\Users\Eduardo\Documents\RAD Studio\Projects\proyectov1Tintoreria\UCliente.pas</Transaction>
+    <Transaction>2014/11/24 08:37:24.981.dfm,C:\Users\Eduardo\Documents\RAD Studio\Projects\proyectov1Tintoreria\Unit1.dfm=C:\Users\Eduardo\Documents\RAD Studio\Projects\proyectov1Tintoreria\UCliente.dfm</Transaction>
+    <Transaction>2014/11/24 12:08:43.984.pas,C:\Users\Eduardo\Documents\RAD Studio\Projects\proyectov1Tintoreria\Unit1.pas=C:\Users\Eduardo\Documents\RAD Studio\Projects\proyectov1Tintoreria\UServicio.pas</Transaction>
+    <Transaction>2014/11/24 12:08:43.984.dfm,C:\Users\Eduardo\Documents\RAD Studio\Projects\proyectov1Tintoreria\Unit1.dfm=C:\Users\Eduardo\Documents\RAD Studio\Projects\proyectov1Tintoreria\UServicio.dfm</Transaction>
+    <Transaction>2014/11/24 12:41:44.452.pas,C:\Users\Eduardo\Documents\RAD Studio\Projects\proyectov1Tintoreria\Unit2.pas=C:\Users\Eduardo\Documents\RAD Studio\Projects\proyectov1Tintoreria\UAgregarServicio.pas</Transaction>
+    <Transaction>2014/11/24 12:41:44.452.dfm,C:\Users\Eduardo\Documents\RAD Studio\Projects\proyectov1Tintoreria\Unit2.dfm=C:\Users\Eduardo\Documents\RAD Studio\Projects\proyectov1Tintoreria\UAgregarServicio.dfm</Transaction>
+  </Transactions>
+</BorlandProject>

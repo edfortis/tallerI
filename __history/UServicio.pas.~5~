@@ -1,0 +1,46 @@
+unit UServicio;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, Menus, StdCtrls, Buttons, Grids, DBGrids, pngimage, ExtCtrls;
+
+type
+  TFServicioAgregar = class(TForm)
+    agregar: TImage;
+    modificar: TImage;
+    borrar: TImage;
+    Reporte: TImage;
+    DBGEmpleado: TDBGrid;
+    BTNBuscar: TBitBtn;
+    EBuscar: TEdit;
+    MainMenu1: TMainMenu;
+    Catlogos1: TMenuItem;
+    Empleado1: TMenuItem;
+    Usuario1: TMenuItem;
+    Cliente1: TMenuItem;
+    Servicio1: TMenuItem;
+    procedure agregarClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FServicioAgregar: TFServicioAgregar;
+   bandera:Integer;
+   inde:Integer;
+implementation
+
+{$R *.dfm}
+
+procedure TFServicioAgregar.agregarClick(Sender: TObject);
+begin
+  Application.CreateForm(TFServicioAgregar, FServicioAgregar);
+  FServicioAgregar.Show;
+  Close;
+end;
+
+end.
