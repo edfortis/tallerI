@@ -68,7 +68,7 @@ rs:_Recordset;
 cadena:String;
 resultado:boolean;
 begin
-  cadena:='SELECT * FROM usuario WHERE nombre='+QuotedStr(usuario)+' AND contrasena='+QuotedStr(contrasena);
+  cadena:='SELECT * FROM usuario WHERE BINARY nombre='+QuotedStr(usuario)+' AND contrasena='+QuotedStr(contrasena);
   QGeneral.Active:=false;
   QGeneral.SQL.Text:=cadena;
   QGeneral.Active:=true;

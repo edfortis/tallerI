@@ -52,12 +52,16 @@ begin
 
   // Show the button type selected
   if buttonSelected = mrOK then
+  try
      identi:=DMtintoreria.TEmpleado.FieldByName('idEmpleado').AsInteger;
      cadena:='DELETE FROM empleado WHERE idEmpleado = '+ IntToStr(identi);
      DMtintoreria.QGeneral.Active:=false;
      DMtintoreria.QGeneral.SQL.Text:=cadena;
      DMtintoreria.QGeneral.ExecSQL;
      DMtintoreria.TEmpleado.Requery;
+  except
+    ShowMessage('Imposible borrar ahora este registro');
+  end;
   ;
   if buttonSelected = mrCancel then ShowMessage('Cancel pressed');
 end;

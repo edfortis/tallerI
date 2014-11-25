@@ -1,7 +1,7 @@
 object FCatalogo: TFCatalogo
   Left = 0
   Top = 0
-  Caption = 'Cat'#225'logos'
+  Caption = 'Empleado'
   ClientHeight = 364
   ClientWidth = 797
   Color = clBtnFace

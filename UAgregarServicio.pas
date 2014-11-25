@@ -21,6 +21,8 @@ type
     ETPorcetanje: TEdit;
     procedure BTNGuardarClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormCreate(Sender: TObject);
+    procedure BTNCancelarClick(Sender: TObject);
 
   private
     { Private declarations }
@@ -34,6 +36,11 @@ var
 implementation
     uses   UDMtintoreria,UServicio;
 {$R *.dfm}
+
+procedure TFServicioAgregar.BTNCancelarClick(Sender: TObject);
+begin
+  Close;
+end;
 
 procedure TFServicioAgregar.BTNGuardarClick(Sender: TObject);
 var
@@ -51,7 +58,7 @@ begin
   DMtintoreria.QGeneral.Active:=false;
   DMtintoreria.QGeneral.SQL.Text:=cadena;
   DMtintoreria.QGeneral.ExecSQL;
-  DMtintoreria.TEmpleado.Requery;
+  DMtintoreria.TServicio.Requery;
   Close;
 end;
 
@@ -60,6 +67,30 @@ procedure TFServicioAgregar.FormClose(Sender: TObject;
 begin
    Application.CreateForm(TFServicio, FServicio);
    FServicio.Show;
+end;
+
+procedure TFServicioAgregar.FormCreate(Sender: TObject);
+var
+cadena:String;
+begin
+if UServicio.bandera = 0 then
+begin
+
+end
+else
+begin
+  //modificar Servicio
+  cadena:='SELECT * FROM catalogoservicio WHERE idCatalogoServicio = '+ IntToStr(UServicio.inde);
+  DMtintoreria.QGeneral.Active:=false;
+  DMtintoreria.QGeneral.SQL.Text:=cadena;
+  DMtintoreria.QGeneral.Active:=true;
+  ETDescripcion.Text:=DMtintoreria.QGeneral.FieldByName('descripcion').AsString;
+  ETPrecio.Text:=DMtintoreria.QGeneral.FieldByName('precio').AsString;
+  ETTipo.Text:=DMtintoreria.QGeneral.FieldByName('tipo').AsString;
+  ETPorcetanje.Text:=DMtintoreria.QGeneral.FieldByName('porcentaje').AsString;
+
+
+  end;
 end;
 
 end.

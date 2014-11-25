@@ -12,6 +12,7 @@ object FServicioAgregar: TFServicioAgregar
   Font.Style = []
   OldCreateOrder = False
   OnClose = FormClose
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
@@ -83,21 +84,21 @@ object FServicioAgregar: TFServicioAgregar
     Left = 8
     Top = 76
     Width = 256
-    Height = 23
+    Height = 21
     TabOrder = 0
   end
   object ETPrecio: TEdit
     Left = 8
     Top = 131
     Width = 256
-    Height = 23
+    Height = 21
     TabOrder = 1
   end
   object ETTipo: TEdit
     Left = 8
     Top = 194
     Width = 256
-    Height = 23
+    Height = 21
     TabOrder = 2
   end
   object BTNGuardar: TBitBtn
@@ -134,6 +135,7 @@ object FServicioAgregar: TFServicioAgregar
     ParentDoubleBuffered = False
     ParentFont = False
     TabOrder = 4
+    OnClick = BTNCancelarClick
   end
   object ETPorcetanje: TEdit
     Left = 8

@@ -44,7 +44,13 @@ end;
 
 procedure TFLogin.BTNIngresarClick(Sender: TObject);
 begin
-  if TBUsuario.Text = '' then
+  if (TBUsuario.Text = '') or  (TBContrasena.Text = '') then
+  begin
+      ShowMessage('Campos vacios');
+  end
+  else
+  begin
+
     if(DMtintoreria.buscarPersona(TBUsuario.Text,TBContrasena.Text))then
   begin
     bandera:=true;
@@ -55,6 +61,7 @@ begin
     ShowMessage('Usuario o Contraseña Incorretos!');
     TBUsuario.SetFocus;
   end;
+  end;// fin validación
 end;
 
 procedure TFLogin.FormClose(Sender: TObject; var Action: TCloseAction);
