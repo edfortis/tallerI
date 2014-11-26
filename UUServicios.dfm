@@ -222,6 +222,16 @@ object FServicios: TFServicios
         OnClick = BtbAgregarClick
       end
     end
+    object btnAgregar: TBitBtn
+      Left = 104
+      Top = 192
+      Width = 75
+      Height = 25
+      Caption = 'Agregar'
+      DoubleBuffered = True
+      ParentDoubleBuffered = False
+      TabOrder = 4
+    end
   end
   object GroupBox3: TGroupBox
     Left = 328

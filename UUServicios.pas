@@ -44,6 +44,7 @@ type
     LblCambioV: TLabel;
     Label13: TLabel;
     Label14: TLabel;
+    btnAgregar: TBitBtn;
     Function ConsultarPrecio(Prenda:String):Real;
     Function ConsultarVariacion(Prenda:String):Real;
      function calculaCambio(Precio:real):real;

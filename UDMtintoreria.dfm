@@ -1,7 +1,7 @@
 object DMtintoreria: TDMtintoreria
   OldCreateOrder = False
-  Height = 337
-  Width = 763
+  Height = 560
+  Width = 797
   object Conexion: TADOConnection
     Connected = True
     ConnectionString = 
@@ -178,53 +178,6 @@ object DMtintoreria: TDMtintoreria
     Left = 320
     Top = 88
   end
-  object TCliente: TADOTable
-    Connection = Conexion
-    CursorType = ctStatic
-    LockType = ltReadOnly
-    OnCalcFields = TClienteCalcFields
-    TableName = 'cliente'
-    Left = 384
-    Top = 32
-    object TClienteidCliente: TIntegerField
-      FieldName = 'idCliente'
-      Visible = False
-    end
-    object TClientenombre: TWideStringField
-      FieldName = 'nombre'
-      Visible = False
-      Size = 45
-    end
-    object TClienteaPaterno: TWideStringField
-      FieldName = 'aPaterno'
-      Visible = False
-      Size = 45
-    end
-    object TClienteaMaterno: TWideStringField
-      FieldName = 'aMaterno'
-      Visible = False
-      Size = 45
-    end
-    object TClientetelefono: TWideStringField
-      FieldName = 'telefono'
-      Size = 45
-    end
-    object TClientedireccion: TWideStringField
-      FieldName = 'direccion'
-      Size = 45
-    end
-    object TClienteNombreCompleto: TStringField
-      FieldKind = fkCalculated
-      FieldName = 'Nombre Completo'
-      Size = 300
-      Calculated = True
-    end
-  end
-  object DSTCliente: TDataSource
-    DataSet = TCliente
-    Left = 384
-    Top = 88
-  end
   object TServicio: TADOTable
     Connection = Conexion
     CursorType = ctStatic
@@ -237,5 +190,176 @@ object DMtintoreria: TDMtintoreria
     DataSet = TServicio
     Left = 448
     Top = 88
+  end
+  object TDatosServicios: TADOTable
+    Active = True
+    Connection = Conexion
+    CursorType = ctStatic
+    TableName = 'catalogoservicio'
+    Left = 384
+    Top = 216
+    object TDatosServiciosPrenda: TWideStringField
+      FieldName = 'Prenda'
+    end
+    object TDatosServiciosprecio: TFloatField
+      FieldName = 'precio'
+    end
+    object TDatosServiciosServicio: TWideStringField
+      FieldName = 'Servicio'
+      Size = 45
+    end
+    object TDatosServiciosporcentaje: TSmallintField
+      FieldName = 'porcentaje'
+    end
+  end
+  object DSTDatosServicios: TDataSource
+    DataSet = TDatosServicios
+    Left = 376
+    Top = 280
+  end
+  object TClientes: TADOTable
+    Active = True
+    Connection = Conexion
+    CursorType = ctStatic
+    TableName = 'catalogoservicio'
+    Left = 472
+    Top = 216
+    object TServicioServicio: TWideStringField
+      FieldName = 'Servicio'
+      Size = 45
+    end
+    object TServicioPrenda: TWideStringField
+      FieldName = 'Prenda'
+    end
+  end
+  object DSTClientes: TDataSource
+    DataSet = TClientes
+    Left = 472
+    Top = 288
+  end
+  object TCarrito: TADOTable
+    Active = True
+    Connection = Conexion
+    CursorType = ctStatic
+    TableName = 'carrito'
+    Left = 544
+    Top = 216
+  end
+  object DSTCarrito: TDataSource
+    DataSet = TCarrito
+    Left = 544
+    Top = 288
+  end
+  object Tentregas: TADOTable
+    Active = True
+    Connection = Conexion
+    CursorType = ctStatic
+    TableName = 'entrega'
+    Left = 608
+    Top = 216
+    object TentregasidEntrega: TAutoIncField
+      FieldName = 'idEntrega'
+      ReadOnly = True
+      Visible = False
+    end
+    object TentregasNumeroentrega: TIntegerField
+      FieldKind = fkCalculated
+      FieldName = 'Numero entrega'
+      Calculated = True
+    end
+    object TentregasfechaEntrega: TDateTimeField
+      FieldName = 'fechaEntrega'
+    end
+  end
+  object DSTentregas: TDataSource
+    DataSet = Tentregas
+    Left = 608
+    Top = 288
+  end
+  object QRegistrarVentaServicio: TADOQuery
+    Connection = Conexion
+    Parameters = <>
+    Left = 96
+    Top = 256
+  end
+  object QInsertaEntrega: TADOQuery
+    Parameters = <
+      item
+        Name = 'Fecha'
+        DataType = ftString
+        Size = -1
+        Value = Null
+      end>
+    Left = 136
+    Top = 192
+  end
+  object TventaServicio: TADOTable
+    Active = True
+    Connection = Conexion
+    CursorType = ctStatic
+    TableName = 'ventaservicio'
+    Left = 672
+    Top = 216
+    object TventaServicioNumeroVenta: TIntegerField
+      FieldKind = fkCalculated
+      FieldName = 'NumeroVenta'
+      Calculated = True
+    end
+    object TventaServiciofecha: TDateField
+      FieldName = 'fecha'
+    end
+    object TventaServicioidVentaServicio: TAutoIncField
+      FieldName = 'idVentaServicio'
+      ReadOnly = True
+      Visible = False
+    end
+  end
+  object DSTventaServicio: TDataSource
+    DataSet = TventaServicio
+    Left = 688
+    Top = 296
+  end
+  object Tcliente: TADOTable
+    Active = True
+    Connection = Conexion
+    CursorType = ctStatic
+    TableName = 'cliente'
+    Left = 208
+    Top = 264
+    object Tclientenombre: TWideStringField
+      FieldName = 'nombre'
+      Size = 45
+    end
+    object TclienteaPaterno: TWideStringField
+      FieldName = 'aPaterno'
+      Size = 45
+    end
+    object Tclientetelefono: TWideStringField
+      FieldName = 'telefono'
+      Size = 45
+    end
+    object Tclientedireccion: TWideStringField
+      FieldName = 'direccion'
+      Size = 45
+    end
+    object TclienteNombreCompleto: TWideStringField
+      FieldKind = fkCalculated
+      FieldName = 'NombreCompleto'
+      Calculated = True
+    end
+    object TclienteidCliente: TAutoIncField
+      FieldName = 'idCliente'
+      ReadOnly = True
+      Visible = False
+    end
+    object TclienteaMaterno: TWideStringField
+      FieldName = 'aMaterno'
+      Size = 45
+    end
+  end
+  object DSTCliente: TDataSource
+    DataSet = Tcliente
+    Left = 208
+    Top = 328
   end
 end

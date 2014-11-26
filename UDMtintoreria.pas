@@ -34,19 +34,44 @@ type
     TUsuariocontrasena: TWideStringField;
     TUsuarioempleado_idEmpleado: TIntegerField;
     TUsuarioNombreCompleto: TStringField;
-    TCliente: TADOTable;
-    DSTCliente: TDataSource;
-    TClienteidCliente: TIntegerField;
-    TClientenombre: TWideStringField;
-    TClienteaPaterno: TWideStringField;
-    TClienteaMaterno: TWideStringField;
-    TClientetelefono: TWideStringField;
-    TClientedireccion: TWideStringField;
-    TClienteNombreCompleto: TStringField;
     TServicio: TADOTable;
     DSTServicio: TDataSource;
+    TDatosServicios: TADOTable;
+    TDatosServiciosPrenda: TWideStringField;
+    TDatosServiciosprecio: TFloatField;
+    TDatosServiciosServicio: TWideStringField;
+    TDatosServiciosporcentaje: TSmallintField;
+    DSTDatosServicios: TDataSource;
+    TClientes: TADOTable;
+    TServicioServicio: TWideStringField;
+    TServicioPrenda: TWideStringField;
+    DSTClientes: TDataSource;
+    TCarrito: TADOTable;
+    DSTCarrito: TDataSource;
+    Tentregas: TADOTable;
+    TentregasidEntrega: TAutoIncField;
+    TentregasNumeroentrega: TIntegerField;
+    TentregasfechaEntrega: TDateTimeField;
+    DSTentregas: TDataSource;
+    QRegistrarVentaServicio: TADOQuery;
+    QInsertaEntrega: TADOQuery;
+    TventaServicio: TADOTable;
+    TventaServicioNumeroVenta: TIntegerField;
+    TventaServiciofecha: TDateField;
+    TventaServicioidVentaServicio: TAutoIncField;
+    DSTventaServicio: TDataSource;
+    Tcliente: TADOTable;
+    Tclientenombre: TWideStringField;
+    TclienteaPaterno: TWideStringField;
+    Tclientetelefono: TWideStringField;
+    Tclientedireccion: TWideStringField;
+    DSTCliente: TDataSource;
+    TclienteNombreCompleto: TWideStringField;
+    TclienteidCliente: TAutoIncField;
+    TclienteaMaterno: TWideStringField;
     procedure TEmpleadoCalcFields(DataSet: TDataSet);
     procedure TClienteCalcFields(DataSet: TDataSet);
+
 
   private
     { Private declarations }
@@ -68,7 +93,7 @@ rs:_Recordset;
 cadena:String;
 resultado:boolean;
 begin
-  cadena:='SELECT * FROM usuario WHERE BINARY nombre='+QuotedStr(usuario)+' AND contrasena='+QuotedStr(contrasena);
+  cadena:='SELECT * FROM usuario WHERE  nombre='+QuotedStr(usuario)+' AND contrasena='+QuotedStr(contrasena);
   QGeneral.Active:=false;
   QGeneral.SQL.Text:=cadena;
   QGeneral.Active:=true;
@@ -90,6 +115,8 @@ procedure TDMtintoreria.TClienteCalcFields(DataSet: TDataSet);
 begin
   TClienteNombreCompleto.Value:= TClientenombre.Value+' '+TClienteaPaterno.Value+' '+TClienteaMaterno.Value;
 end;
+
+
 
 procedure TDMtintoreria.TEmpleadoCalcFields(DataSet: TDataSet);
 begin
