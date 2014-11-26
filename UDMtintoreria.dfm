@@ -1,12 +1,12 @@
 object DMtintoreria: TDMtintoreria
   OldCreateOrder = False
-  Height = 227
-  Width = 756
+  Height = 337
+  Width = 763
   object Conexion: TADOConnection
     Connected = True
     ConnectionString = 
-      'Provider=MSDASQL.1;Persist Security Info=False;User ID=root;Data' +
-      ' Source=tintoreria;Initial Catalog=tintoreria;'
+      'Provider=MSDASQL.1;Password=12345;Persist Security Info=True;Use' +
+      'r ID=root;Data Source=Conexion;Initial Catalog=tintoreria'
     LoginPrompt = False
     Left = 64
     Top = 64
@@ -29,7 +29,6 @@ object DMtintoreria: TDMtintoreria
     Top = 32
   end
   object TEmpleado: TADOTable
-    Active = True
     Connection = Conexion
     CursorType = ctStatic
     LockType = ltReadOnly
@@ -137,7 +136,6 @@ object DMtintoreria: TDMtintoreria
     Top = 88
   end
   object TUsuario: TADOTable
-    Active = True
     Connection = Conexion
     CursorType = ctStatic
     LockType = ltReadOnly
@@ -181,7 +179,6 @@ object DMtintoreria: TDMtintoreria
     Top = 88
   end
   object TCliente: TADOTable
-    Active = True
     Connection = Conexion
     CursorType = ctStatic
     LockType = ltReadOnly
@@ -229,7 +226,6 @@ object DMtintoreria: TDMtintoreria
     Top = 88
   end
   object TServicio: TADOTable
-    Active = True
     Connection = Conexion
     CursorType = ctStatic
     LockType = ltReadOnly
