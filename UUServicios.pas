@@ -23,7 +23,6 @@ type
     BtnCobrar: TButton;
     Label4: TLabel;
     EEfectivo: TEdit;
-    EPrenda: TEdit;
     GroupBox2: TGroupBox;
     Label7: TLabel;
     Label8: TLabel;
@@ -45,6 +44,8 @@ type
     Label13: TLabel;
     Label14: TLabel;
     btnAgregar: TBitBtn;
+    DBLPrenda: TDBLookupComboBox;
+    lblID: TLabel;
     Function ConsultarPrecio(Prenda:String):Real;
     Function ConsultarVariacion(Prenda:String):Real;
      function calculaCambio(Precio:real):real;
@@ -57,7 +58,10 @@ type
     function regresaIdFecha():integer;
     function ValidaCampos():boolean;
     procedure BtnRevertirClick(Sender: TObject);
-    Procedure insertaCarrito(IDCatalogo:Integer; IDVentaServicio:integer);
+    Procedure insertaCarrito(IDCatalogo:Integer; IDVentaServicio:integer; cantidad:integer);
+    function IDVenta():integer;
+    procedure btnAgregarClick(Sender: TObject);
+    Function ConsultarIDServicio(Prenda:String):Integer;
   private
     { Private declarations }
   public
@@ -77,7 +81,7 @@ var
 cadena:String;
 resultado:real;
 begin
-   cadena:='SELECT precio from CatalogoServicio where prenda= '+ QuotedStr(prenda);
+   cadena:='SELECT precio from CatalogoServicio where descripcion= '+ QuotedStr(prenda);
    DMtintoreria.Qgeneral.Active:=false;
    DMtintoreria.Qgeneral.SQL.Text:=cadena;
    DMtintoreria.Qgeneral.Active:=true;
@@ -85,12 +89,25 @@ begin
    ConsultarPrecio:=Resultado;
 end;
 
+Function TFServicios.ConsultarIDServicio(Prenda:String):Integer;    //Consulta el precio de una prenda
+var
+cadena:String;
+resultado:Integer;
+begin
+   cadena:='SELECT idCatalogoServicio from CatalogoServicio where descripcion= '+ QuotedStr(prenda);
+   DMtintoreria.Qgeneral.Active:=false;
+   DMtintoreria.Qgeneral.SQL.Text:=cadena;
+   DMtintoreria.Qgeneral.Active:=true;
+   Resultado := DMtintoreria.QGeneral.Fields[0].AsInteger;
+   ConsultarIDServicio:=Resultado;
+end;
+
 Function TFServicios.ConsultarVariacion(Prenda:String):Real;    //Consulta el precio de una prenda
 var
 cadena:String;
 resultado:real;
 begin
-   cadena:='SELECT porcentaje from CatalogoServicio where prenda= '+ QuotedStr(prenda);
+   cadena:='SELECT porcentaje from CatalogoServicio where descripcion= '+ QuotedStr(prenda);
    DMtintoreria.Qgeneral.Active:=false;
    DMtintoreria.Qgeneral.SQL.Text:=cadena;
    DMtintoreria.Qgeneral.Active:=true;
@@ -124,6 +141,19 @@ cadena:='SELECT MAX(identrega) from entrega';
    regresaIDFecha:=Resultado;
 end;
 
+function TFServicios.IDVenta():integer;
+var
+cadena:string;
+resultado:integer;
+begin
+cadena:='SELECT MAX(idVentaServicio) from VentaServicio';
+   DMtintoreria.Qgeneral.Active:=false;
+   DMtintoreria.Qgeneral.SQL.Text:=cadena;
+   DMtintoreria.Qgeneral.Active:=true;
+   Resultado := DMtintoreria.QGeneral.Fields[0].AsInteger;
+   IDVenta:=Resultado;
+end;
+
 function TFServicios.consultarIdEmpleado(Nombre: String; ApellidoP:String):integer;
 var
 cadena:String;
@@ -150,6 +180,16 @@ begin
     ConsultarIDCliente:=Resultado;
 end;
 
+procedure TFServicios.btnAgregarClick(Sender: TObject);
+begin
+
+      lblID.Caption:= IntToStr(IDVenta+1);
+      insertaCarrito(ConsultarIDServicio(DBLPrenda.Text), StrToInt(lblID.Caption), StrToInt(ETotal.Text));
+
+
+       end;
+
+
 procedure TFServicios.BtnCobrarClick(Sender: TObject);
 var
 cambio:real;
@@ -160,7 +200,7 @@ begin
 end
   else
   begin
- cambio:=calculaCambio(ConsultarPrecio(EPrenda.Text));
+ cambio:=calculaCambio(ConsultarPrecio(DBLPrenda.Text));
  if (cambio < 0) then
  begin
   ShowMessage('Efectivo insuficiente');
@@ -171,26 +211,27 @@ end
    if (EPVariacion.Text <> '') then
    begin
 
-     lblporcentaje.Caption:= FloatToStr(ConsultarPrecio(EPrenda.Text) * StrToInt(ETotal.Text));
+     lblporcentaje.Caption:= FloatToStr(ConsultarPrecio(DBLPrenda.Text) * StrToInt(ETotal.Text));
       lblprecioVariacion.Caption:= FloatToStr(((StrToInt(EPVariacion.Text) * StrToInt(lblporcentaje.Caption))/100 ) + StrToInt(lblporcentaje.Caption));
        LblCambioV.Caption:=  FloatToStr(StrToInt(EEfectivo.Text) - StrToFloat(lblprecioVariacion.Caption))
    end;
 
   end;
-Procedure TFServicios.insertaCarrito(IDCatalogo:Integer; IDVentaServicio:integer);
+Procedure TFServicios.insertaCarrito(IDCatalogo:Integer; IDVentaServicio:integer; cantidad:integer);
   var
 cadena:String;
 begin
-   cadena:='INSERT INTO carrito (catalogoServicio_IDCatalogoServicio, VentaServicio_IDVentaServicio) Values (' + QuotedStr(IntToStr(IDCatalogo)) + ',' + QuotedStr(IntToStr(IDVentaServicio)) + ')';
+   cadena:='INSERT INTO carrito (catalogoServicio_IDCatalogoServicio, VentaServicio_IDVentaServicio, cantidad) Values (' + QuotedStr(IntToStr(IDCatalogo)) + ',' + QuotedStr(IntToStr(IDVentaServicio)) + ',' + QuotedStr(IntToStr(cantidad)) + ')';
    DMtintoreria.Qgeneral.Active:=false;
    DMtintoreria.Qgeneral.SQL.Text:=cadena;
    DMtintoreria.Qgeneral.ExecSQL;
+     ShowMessage('agregado correctamente al carrito');
   end;
 
 procedure TFServicios.BtnRevertirClick(Sender: TObject);
 begin
 
-EPrenda.Text := '';
+
 ETotal.Text := '';
 EdNombreE.Text := '';
 EdNombreCliente.Text := '';
@@ -232,7 +273,7 @@ end;
 
 function TFServicios.ValidaCampos():boolean;
 begin
-if ((EPrenda.Text = '') or (ETotal.Text = '') or (DBLServicio.Text='') or (EdNombreE.Text = '') or (EdNombreCliente.Text = '')or (EdApellidoP.Text = '') or (EdApellidoPaternoCliente.Text = '')or (EFecha.Text = '')) then
+if ((DBLPrenda.Text = '') or (ETotal.Text = '') or (DBLServicio.Text='') or (EdNombreE.Text = '') or (EdNombreCliente.Text = '')or (EdApellidoP.Text = '') or (EdApellidoPaternoCliente.Text = '')or (EFecha.Text = '')) then
 begin
 ValidaCampos:=true;
 end
@@ -264,8 +305,10 @@ InsertarFecha(EFecha.Text);
 idEntrega:= regresaIdFecha();
 Fecha:= date();
 RegistrarVentaServicio(FormatDateTime('yy/mm/dd', Fecha),idEmpleado,idEntrega,idCliente);
+
 DMtintoreria.TventaServicio.Close;
 DMtintoreria.TventaServicio.Open;
+
 
 end;
 

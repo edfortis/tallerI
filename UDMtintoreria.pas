@@ -63,16 +63,19 @@ type
     TclienteNombreCompleto: TWideStringField;
     TclienteidCliente: TAutoIncField;
     TclienteaMaterno: TWideStringField;
-    TServicioServicio2: TWideStringField;
-    TDatosServiciosidCatalogoServicio: TAutoIncField;
-    TDatosServiciosdescripcion: TWideMemoField;
+    TClientesdescripcion: TWideMemoField;
+    TClientestipo: TWideStringField;
+    TServiciotipo: TWideStringField;
+    ADOTable1: TADOTable;
+    DataSource1: TDataSource;
+    ADOTable1descripcion: TWideStringField;
+    TDatosServiciosdescripcion: TWideStringField;
     TDatosServiciosprecio: TFloatField;
     TDatosServiciostipo: TWideStringField;
     TDatosServiciosporcentaje: TIntegerField;
-    TClientesdescripcion: TWideMemoField;
-    TClientestipo: TWideStringField;
     procedure TEmpleadoCalcFields(DataSet: TDataSet);
     procedure TClienteCalcFields(DataSet: TDataSet);
+    procedure TventaServicioCalcFields(DataSet: TDataSet);
 
 
   private
@@ -95,19 +98,18 @@ rs:_Recordset;
 cadena:String;
 resultado:boolean;
 begin
-  cadena:='SELECT * from usuario WHERE nombre = ' + QuotedStr(usuario) + ' AND contrasena = ' + QuotedStr(contrasena);
+  cadena:='SELECT * FROM usuario WHERE nombre = ' + QuotedStr(usuario) + ' AND contrasena = ' + QuotedStr(contrasena);
   QGeneral.Active:=false;
   QGeneral.SQL.Text:=cadena;
   QGeneral.Active:=true;
   if(QGeneral.RecordCount = 1) then
   begin
-  resultado:=true;
   nombre:=QGeneral.FieldByName('nombre').Value;
+  buscarPersona:=true;
   end
   else
   begin
-  resultado:=false;
-  Result:=resultado;
+  buscarPersona:=false;
   end;
 end;
 
@@ -124,6 +126,11 @@ begin
 procedure TDMtintoreria.TEmpleadoCalcFields(DataSet: TDataSet);
 begin
      TEmpleadonombreCompleto.Value:= TEmpleadonombre.Value+ ' '+ TEmpleadoaPaterno.Value+' ' +TEmpleadoaMaterno.Value;
+end;
+
+procedure TDMtintoreria.TventaServicioCalcFields(DataSet: TDataSet);
+begin
+    TventaServicioNumeroVenta.Value:=  TventaServicioidVentaServicio.Value;
 end;
 
 end.

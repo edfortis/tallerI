@@ -68,7 +68,6 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `tintoreria`.`ventaServicio` (
   `idVentaServicio` INT NOT NULL AUTO_INCREMENT,
   `fecha` DATE NOT NULL,
-  `ventaServiciocol` VARCHAR(45) NOT NULL,
   `empleado_idEmpleado` INT NOT NULL,
   `entrega_idEntrega` INT NULL,
   `cliente_idCliente` INT NULL,
@@ -115,19 +114,7 @@ CREATE TABLE IF NOT EXISTS `tintoreria`.`carrito` (
   `catalogoServicio_idCatalogoServicio` INT NOT NULL,
   `ventaServicio_idVentaServicio` INT NOT NULL,
 	`Cantidad` INT NOT NULL,
-  PRIMARY KEY (`idCarrito`),
-  INDEX `fk_carrito_catalogoServicio1_idx` (`catalogoServicio_idCatalogoServicio` ASC),
-  INDEX `fk_carrito_ventaServicio1_idx` (`ventaServicio_idVentaServicio` ASC),
-  CONSTRAINT `fk_carrito_catalogoServicio1`
-    FOREIGN KEY (`catalogoServicio_idCatalogoServicio`)
-    REFERENCES `tintoreria`.`catalogoServicio` (`idCatalogoServicio`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_carrito_ventaServicio1`
-    FOREIGN KEY (`ventaServicio_idVentaServicio`)
-    REFERENCES `tintoreria`.`ventaServicio` (`idVentaServicio`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  PRIMARY KEY (`idCarrito`))
 ENGINE = InnoDB;
 
 

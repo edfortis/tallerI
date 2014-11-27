@@ -75,7 +75,7 @@ object FServicios: TFServicios
   end
   object GroupBox1: TGroupBox
     Left = 8
-    Top = 0
+    Top = 8
     Width = 314
     Height = 514
     Caption = 'Venta '
@@ -89,48 +89,41 @@ object FServicios: TFServicios
     end
     object Label2: TLabel
       Left = 19
-      Top = 86
+      Top = 146
       Width = 81
       Height = 13
       Caption = 'Total de prendas'
     end
     object Label3: TLabel
-      Left = 160
-      Top = 40
+      Left = 19
+      Top = 88
       Width = 37
       Height = 13
       Caption = 'Servicio'
     end
     object ETotal: TEdit
       Left = 16
-      Top = 105
+      Top = 165
       Width = 121
       Height = 21
-      TabOrder = 2
-    end
-    object DBLServicio: TDBLookupComboBox
-      Left = 160
-      Top = 59
-      Width = 121
-      Height = 21
-      KeyField = 'Servicio'
-      ListSource = DMtintoreria.DSTServicio
       TabOrder = 1
     end
-    object EPrenda: TEdit
+    object DBLServicio: TDBLookupComboBox
       Left = 16
-      Top = 59
-      Width = 121
+      Top = 107
+      Width = 201
       Height = 21
+      KeyField = 'tipo'
+      ListSource = DMtintoreria.DSTServicio
       TabOrder = 0
     end
     object GroupBox2: TGroupBox
       Left = 0
-      Top = 252
+      Top = 256
       Width = 328
       Height = 262
       Caption = 'Informacion entrega'
-      TabOrder = 3
+      TabOrder = 2
       object Label7: TLabel
         Left = 28
         Top = 154
@@ -165,6 +158,12 @@ object FServicios: TFServicios
         Width = 112
         Height = 13
         Caption = 'Apellido paterno cliente'
+      end
+      object lblID: TLabel
+        Left = 184
+        Top = 169
+        Width = 3
+        Height = 13
       end
       object EFecha: TEdit
         Left = 28
@@ -223,13 +222,23 @@ object FServicios: TFServicios
       end
     end
     object btnAgregar: TBitBtn
-      Left = 104
-      Top = 192
-      Width = 75
-      Height = 25
-      Caption = 'Agregar'
+      Left = 90
+      Top = 208
+      Width = 97
+      Height = 42
+      Caption = 'Agregar carrito'
       DoubleBuffered = True
       ParentDoubleBuffered = False
+      TabOrder = 3
+      OnClick = btnAgregarClick
+    end
+    object DBLPrenda: TDBLookupComboBox
+      Left = 16
+      Top = 61
+      Width = 201
+      Height = 21
+      KeyField = 'descripcion'
+      ListSource = DMtintoreria.DataSource1
       TabOrder = 4
     end
   end

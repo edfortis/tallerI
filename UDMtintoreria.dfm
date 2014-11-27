@@ -181,14 +181,15 @@ object DMtintoreria: TDMtintoreria
     Top = 88
   end
   object TServicio: TADOTable
+    Active = True
     Connection = Conexion
     CursorType = ctStatic
     LockType = ltReadOnly
     TableName = 'catalogoservicio'
     Left = 448
     Top = 40
-    object TServicioServicio2: TWideStringField
-      FieldName = 'Servicio'
+    object TServiciotipo: TWideStringField
+      FieldName = 'tipo'
       Size = 45
     end
   end
@@ -198,18 +199,15 @@ object DMtintoreria: TDMtintoreria
     Top = 88
   end
   object TDatosServicios: TADOTable
+    Active = True
     Connection = Conexion
     CursorType = ctStatic
     TableName = 'catalogoservicio'
     Left = 384
     Top = 216
-    object TDatosServiciosidCatalogoServicio: TAutoIncField
-      FieldName = 'idCatalogoServicio'
-      ReadOnly = True
-    end
-    object TDatosServiciosdescripcion: TWideMemoField
+    object TDatosServiciosdescripcion: TWideStringField
       FieldName = 'descripcion'
-      BlobType = ftWideMemo
+      Size = 80
     end
     object TDatosServiciosprecio: TFloatField
       FieldName = 'precio'
@@ -307,6 +305,7 @@ object DMtintoreria: TDMtintoreria
     Active = True
     Connection = Conexion
     CursorType = ctStatic
+    OnCalcFields = TventaServicioCalcFields
     TableName = 'ventaservicio'
     Left = 672
     Top = 216
@@ -371,5 +370,23 @@ object DMtintoreria: TDMtintoreria
     DataSet = Tcliente
     Left = 208
     Top = 328
+  end
+  object ADOTable1: TADOTable
+    Active = True
+    Connection = Conexion
+    CursorType = ctStatic
+    LockType = ltReadOnly
+    TableName = 'catalogoservicio'
+    Left = 552
+    Top = 88
+    object ADOTable1descripcion: TWideStringField
+      FieldName = 'descripcion'
+      Size = 80
+    end
+  end
+  object DataSource1: TDataSource
+    DataSet = ADOTable1
+    Left = 552
+    Top = 136
   end
 end
