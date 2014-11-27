@@ -37,14 +37,8 @@ type
     TServicio: TADOTable;
     DSTServicio: TDataSource;
     TDatosServicios: TADOTable;
-    TDatosServiciosPrenda: TWideStringField;
-    TDatosServiciosprecio: TFloatField;
-    TDatosServiciosServicio: TWideStringField;
-    TDatosServiciosporcentaje: TSmallintField;
     DSTDatosServicios: TDataSource;
     TClientes: TADOTable;
-    TServicioServicio: TWideStringField;
-    TServicioPrenda: TWideStringField;
     DSTClientes: TDataSource;
     TCarrito: TADOTable;
     DSTCarrito: TDataSource;
@@ -69,6 +63,14 @@ type
     TclienteNombreCompleto: TWideStringField;
     TclienteidCliente: TAutoIncField;
     TclienteaMaterno: TWideStringField;
+    TServicioServicio2: TWideStringField;
+    TDatosServiciosidCatalogoServicio: TAutoIncField;
+    TDatosServiciosdescripcion: TWideMemoField;
+    TDatosServiciosprecio: TFloatField;
+    TDatosServiciostipo: TWideStringField;
+    TDatosServiciosporcentaje: TIntegerField;
+    TClientesdescripcion: TWideMemoField;
+    TClientestipo: TWideStringField;
     procedure TEmpleadoCalcFields(DataSet: TDataSet);
     procedure TClienteCalcFields(DataSet: TDataSet);
 
@@ -93,7 +95,7 @@ rs:_Recordset;
 cadena:String;
 resultado:boolean;
 begin
-  cadena:='SELECT * FROM usuario WHERE  nombre='+QuotedStr(usuario)+' AND contrasena='+QuotedStr(contrasena);
+  cadena:='SELECT * from usuario WHERE nombre = ' + QuotedStr(usuario) + ' AND contrasena = ' + QuotedStr(contrasena);
   QGeneral.Active:=false;
   QGeneral.SQL.Text:=cadena;
   QGeneral.Active:=true;
@@ -114,7 +116,8 @@ end;
 procedure TDMtintoreria.TClienteCalcFields(DataSet: TDataSet);
 begin
   TClienteNombreCompleto.Value:= TClientenombre.Value+' '+TClienteaPaterno.Value+' '+TClienteaMaterno.Value;
-end;
+
+  end;
 
 
 

@@ -29,6 +29,7 @@ object DMtintoreria: TDMtintoreria
     Top = 32
   end
   object TEmpleado: TADOTable
+    Active = True
     Connection = Conexion
     CursorType = ctStatic
     LockType = ltReadOnly
@@ -102,8 +103,8 @@ object DMtintoreria: TDMtintoreria
   object RvProject1: TRvProject
     Engine = RvSystem1
     LoadDesigner = True
-    Left = 520
-    Top = 96
+    Left = 688
+    Top = 368
   end
   object RvRenderPDF1: TRvRenderPDF
     DisplayName = 'Adobe Acrobat (PDF)'
@@ -132,10 +133,11 @@ object DMtintoreria: TDMtintoreria
     SystemPrinter.StatusFormat = 'Printing page %p'
     SystemPrinter.Title = 'Rave Report'
     SystemPrinter.UnitsFactor = 1.000000000000000000
-    Left = 664
-    Top = 88
+    Left = 616
+    Top = 360
   end
   object TUsuario: TADOTable
+    Active = True
     Connection = Conexion
     CursorType = ctStatic
     LockType = ltReadOnly
@@ -185,6 +187,10 @@ object DMtintoreria: TDMtintoreria
     TableName = 'catalogoservicio'
     Left = 448
     Top = 40
+    object TServicioServicio2: TWideStringField
+      FieldName = 'Servicio'
+      Size = 45
+    end
   end
   object DSTServicio: TDataSource
     DataSet = TServicio
@@ -192,23 +198,27 @@ object DMtintoreria: TDMtintoreria
     Top = 88
   end
   object TDatosServicios: TADOTable
-    Active = True
     Connection = Conexion
     CursorType = ctStatic
     TableName = 'catalogoservicio'
     Left = 384
     Top = 216
-    object TDatosServiciosPrenda: TWideStringField
-      FieldName = 'Prenda'
+    object TDatosServiciosidCatalogoServicio: TAutoIncField
+      FieldName = 'idCatalogoServicio'
+      ReadOnly = True
+    end
+    object TDatosServiciosdescripcion: TWideMemoField
+      FieldName = 'descripcion'
+      BlobType = ftWideMemo
     end
     object TDatosServiciosprecio: TFloatField
       FieldName = 'precio'
     end
-    object TDatosServiciosServicio: TWideStringField
-      FieldName = 'Servicio'
+    object TDatosServiciostipo: TWideStringField
+      FieldName = 'tipo'
       Size = 45
     end
-    object TDatosServiciosporcentaje: TSmallintField
+    object TDatosServiciosporcentaje: TIntegerField
       FieldName = 'porcentaje'
     end
   end
@@ -218,18 +228,18 @@ object DMtintoreria: TDMtintoreria
     Top = 280
   end
   object TClientes: TADOTable
-    Active = True
     Connection = Conexion
     CursorType = ctStatic
     TableName = 'catalogoservicio'
     Left = 472
     Top = 216
-    object TServicioServicio: TWideStringField
-      FieldName = 'Servicio'
-      Size = 45
+    object TClientesdescripcion: TWideMemoField
+      FieldName = 'descripcion'
+      BlobType = ftWideMemo
     end
-    object TServicioPrenda: TWideStringField
-      FieldName = 'Prenda'
+    object TClientestipo: TWideStringField
+      FieldName = 'tipo'
+      Size = 45
     end
   end
   object DSTClientes: TDataSource

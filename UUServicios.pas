@@ -57,6 +57,7 @@ type
     function regresaIdFecha():integer;
     function ValidaCampos():boolean;
     procedure BtnRevertirClick(Sender: TObject);
+    Procedure insertaCarrito(IDCatalogo:Integer; IDVentaServicio:integer);
   private
     { Private declarations }
   public
@@ -175,6 +176,15 @@ end
        LblCambioV.Caption:=  FloatToStr(StrToInt(EEfectivo.Text) - StrToFloat(lblprecioVariacion.Caption))
    end;
 
+  end;
+Procedure TFServicios.insertaCarrito(IDCatalogo:Integer; IDVentaServicio:integer);
+  var
+cadena:String;
+begin
+   cadena:='INSERT INTO carrito (catalogoServicio_IDCatalogoServicio, VentaServicio_IDVentaServicio) Values (' + QuotedStr(IntToStr(IDCatalogo)) + ',' + QuotedStr(IntToStr(IDVentaServicio)) + ')';
+   DMtintoreria.Qgeneral.Active:=false;
+   DMtintoreria.Qgeneral.SQL.Text:=cadena;
+   DMtintoreria.Qgeneral.ExecSQL;
   end;
 
 procedure TFServicios.BtnRevertirClick(Sender: TObject);

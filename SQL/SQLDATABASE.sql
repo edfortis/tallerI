@@ -102,7 +102,7 @@ CREATE TABLE IF NOT EXISTS `tintoreria`.`catalogoServicio` (
   `descripcion` TEXT NULL,
   `precio` DOUBLE NOT NULL,
   `tipo` VARCHAR(45) NOT NULL,
-  `porcentaje` TINYINT NULL,
+  `porcentaje` int NULL,
   PRIMARY KEY (`idCatalogoServicio`))
 ENGINE = InnoDB;
 
@@ -114,6 +114,7 @@ CREATE TABLE IF NOT EXISTS `tintoreria`.`carrito` (
   `idCarrito` INT NOT NULL AUTO_INCREMENT,
   `catalogoServicio_idCatalogoServicio` INT NOT NULL,
   `ventaServicio_idVentaServicio` INT NOT NULL,
+	`Cantidad` INT NOT NULL,
   PRIMARY KEY (`idCarrito`),
   INDEX `fk_carrito_catalogoServicio1_idx` (`catalogoServicio_idCatalogoServicio` ASC),
   INDEX `fk_carrito_ventaServicio1_idx` (`ventaServicio_idVentaServicio` ASC),
