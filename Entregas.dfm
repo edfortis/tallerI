@@ -14,10 +14,10 @@ object FEntregas: TFEntregas
   PixelsPerInch = 96
   TextHeight = 13
   object DBGrid1: TDBGrid
-    Left = 80
-    Top = 40
-    Width = 561
-    Height = 241
+    Left = 0
+    Top = 8
+    Width = 273
+    Height = 177
     DataSource = DMtintoreria.DSTentregas
     TabOrder = 0
     TitleFont.Charset = DEFAULT_CHARSET
