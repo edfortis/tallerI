@@ -285,6 +285,15 @@ object DMtintoreria: TDMtintoreria
     TableName = 'entrega'
     Left = 608
     Top = 216
+    object TentregasFecha: TDateField
+      FieldKind = fkLookup
+      FieldName = 'Fecha'
+      LookupDataSet = TventaServicio
+      LookupKeyFields = 'entrega_idEntrega'
+      LookupResultField = 'fecha'
+      KeyFields = 'idEntrega'
+      Lookup = True
+    end
     object TentregasfechaEntrega: TDateTimeField
       FieldName = 'fechaEntrega'
     end
@@ -314,6 +323,11 @@ object DMtintoreria: TDMtintoreria
     end
     object Tentregascliente_idCliente: TIntegerField
       FieldName = 'cliente_idCliente'
+      Visible = False
+    end
+    object TentregasidEntrega: TAutoIncField
+      FieldName = 'idEntrega'
+      ReadOnly = True
       Visible = False
     end
   end
@@ -358,6 +372,10 @@ object DMtintoreria: TDMtintoreria
     object TventaServicioidVentaServicio: TAutoIncField
       FieldName = 'idVentaServicio'
       ReadOnly = True
+      Visible = False
+    end
+    object TventaServicioentrega_idEntrega: TIntegerField
+      FieldName = 'entrega_idEntrega'
       Visible = False
     end
   end

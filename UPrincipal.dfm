@@ -2,8 +2,8 @@ object FPrincipal: TFPrincipal
   Left = 0
   Top = 0
   Caption = 'Pantalla Principal'
-  ClientHeight = 271
-  ClientWidth = 575
+  ClientHeight = 284
+  ClientWidth = 568
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowFrame

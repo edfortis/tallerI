@@ -80,6 +80,9 @@ type
     Tentregascliente_idCliente: TIntegerField;
     TentregasCliente: TStringField;
     TentregasDireccion: TStringField;
+    TentregasidEntrega: TAutoIncField;
+    TventaServicioentrega_idEntrega: TIntegerField;
+    TentregasFecha: TDateField;
     procedure TEmpleadoCalcFields(DataSet: TDataSet);
     procedure TClienteCalcFields(DataSet: TDataSet);
     procedure TventaServicioCalcFields(DataSet: TDataSet);
