@@ -2,8 +2,8 @@ object FPrincipal: TFPrincipal
   Left = 0
   Top = 0
   Caption = 'Pantalla Principal'
-  ClientHeight = 271
-  ClientWidth = 575
+  ClientHeight = 284
+  ClientWidth = 568
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowFrame
@@ -18,8 +18,8 @@ object FPrincipal: TFPrincipal
   object EtiquetaBienvenida: TLabel
     Left = 8
     Top = 8
-    Width = 78
-    Height = 20
+    Width = 71
+    Height = 17
     Caption = 'Bienvenido'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowFrame
@@ -100,8 +100,8 @@ object FPrincipal: TFPrincipal
   object Label1: TLabel
     Left = 126
     Top = 64
-    Width = 87
-    Height = 26
+    Width = 86
+    Height = 22
     Caption = 'Cat'#225'logos'
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowFrame
@@ -192,12 +192,13 @@ object FPrincipal: TFPrincipal
       FACE8003101B1BCBB2B2B20888580041D7EC5A404FA193857C676D9DF80350B4
       E98557FA00C1305C8F595F06E61B8AFF8EF21F206E6ADC30F5CA270000000049
       454E44AE426082}
+    OnClick = Image2Click
   end
   object Label2: TLabel
     Left = 244
     Top = 64
-    Width = 79
-    Height = 26
+    Width = 76
+    Height = 22
     Caption = 'Entregas'
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowFrame
@@ -319,12 +320,13 @@ object FPrincipal: TFPrincipal
       80AF058033CFACA1CD9B1301D1B9A5D3871C88D9A6402A8A44E24BD351D0F911
       30A2C7604F3130917011FB51F799487C3EBF1D75EF2B245A85E85A1309BDB127
       0EEAC1B037DFE5FFC40A9F57A42977150000000049454E44AE426082}
+    OnClick = Image3Click
   end
   object Label3: TLabel
     Left = 365
     Top = 64
     Width = 78
-    Height = 26
+    Height = 22
     Caption = 'Servicios'
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowFrame

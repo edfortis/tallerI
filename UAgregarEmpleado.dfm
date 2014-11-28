@@ -112,7 +112,6 @@ object UAgregar: TUAgregar
     Width = 256
     Height = 23
     TabOrder = 0
-    OnKeyPress = ETNombreKeyPress
   end
   object ETPaterno: TEdit
     Left = 8
@@ -120,7 +119,6 @@ object UAgregar: TUAgregar
     Width = 256
     Height = 23
     TabOrder = 1
-    OnKeyPress = ETPaternoKeyPress
   end
   object ETMaterno: TEdit
     Left = 8
@@ -128,7 +126,6 @@ object UAgregar: TUAgregar
     Width = 256
     Height = 23
     TabOrder = 2
-    OnKeyPress = ETMaternoKeyPress
   end
   object ETEmail: TEdit
     Left = 8
@@ -143,7 +140,6 @@ object UAgregar: TUAgregar
     Width = 256
     Height = 23
     TabOrder = 4
-    OnKeyPress = ETTelefonoKeyPress
   end
   object BTNGuardar: TBitBtn
     Left = 8
@@ -168,7 +164,7 @@ object UAgregar: TUAgregar
     Top = 512
     Width = 104
     Height = 25
-    Caption = 'Cancelar'
+    Caption = 'BTNCancelar'
     DoubleBuffered = True
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText

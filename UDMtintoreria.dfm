@@ -1,12 +1,12 @@
 object DMtintoreria: TDMtintoreria
   OldCreateOrder = False
-  Height = 227
-  Width = 756
+  Height = 560
+  Width = 797
   object Conexion: TADOConnection
     Connected = True
     ConnectionString = 
-      'Provider=MSDASQL.1;Persist Security Info=False;User ID=root;Data' +
-      ' Source=tintoreria;Initial Catalog=tintoreria;'
+      'Provider=MSDASQL.1;Password=12345;Persist Security Info=True;Use' +
+      'r ID=root;Data Source=Conexion;Initial Catalog=tintoreria'
     LoginPrompt = False
     Left = 64
     Top = 64
@@ -94,33 +94,33 @@ object DMtintoreria: TDMtintoreria
     Left = 256
     Top = 88
   end
-  object RvStados: TRvDataSetConnection
+  object RvSEntregas: TRvDataSetConnection
     RuntimeVisibility = rtDeveloper
-    DataSet = TEmpleado
-    Left = 528
-    Top = 24
+    DataSet = Tentregas
+    Left = 280
+    Top = 392
   end
   object RvProject1: TRvProject
     Engine = RvSystem1
     LoadDesigner = True
-    Left = 520
-    Top = 96
+    Left = 688
+    Top = 368
   end
   object RvRenderPDF1: TRvRenderPDF
     DisplayName = 'Adobe Acrobat (PDF)'
     FileExtension = '*.pdf'
     DocInfo.Creator = 'Rave Reports (http://www.nevrona.com/rave)'
     DocInfo.Producer = 'Nevrona Designs'
-    Left = 592
-    Top = 24
+    Left = 368
+    Top = 376
   end
   object RvRenderText1: TRvRenderText
     DisplayName = 'Plain Text (TXT)'
     FileExtension = '*.txt'
     CPI = 10.000000000000000000
     LPI = 6.000000000000000000
-    Left = 656
-    Top = 24
+    Left = 464
+    Top = 376
   end
   object RvSystem1: TRvSystem
     TitleSetup = 'Output Options'
@@ -133,8 +133,8 @@ object DMtintoreria: TDMtintoreria
     SystemPrinter.StatusFormat = 'Printing page %p'
     SystemPrinter.Title = 'Rave Report'
     SystemPrinter.UnitsFactor = 1.000000000000000000
-    Left = 664
-    Top = 88
+    Left = 616
+    Top = 360
   end
   object TUsuario: TADOTable
     Active = True
@@ -180,57 +180,6 @@ object DMtintoreria: TDMtintoreria
     Left = 320
     Top = 88
   end
-  object TCliente: TADOTable
-    Active = True
-    Connection = Conexion
-    CursorType = ctStatic
-    LockType = ltReadOnly
-    OnCalcFields = TClienteCalcFields
-    TableName = 'cliente'
-    Left = 384
-    Top = 32
-    object TClienteidCliente: TIntegerField
-      FieldName = 'idCliente'
-      Visible = False
-    end
-    object TClienteNombreCompleto: TStringField
-      DisplayWidth = 60
-      FieldKind = fkCalculated
-      FieldName = 'Nombre Completo'
-      Size = 300
-      Calculated = True
-    end
-    object TClientenombre: TWideStringField
-      FieldName = 'nombre'
-      Visible = False
-      Size = 45
-    end
-    object TClienteaPaterno: TWideStringField
-      FieldName = 'aPaterno'
-      Visible = False
-      Size = 45
-    end
-    object TClienteaMaterno: TWideStringField
-      FieldName = 'aMaterno'
-      Visible = False
-      Size = 45
-    end
-    object TClientetelefono: TWideStringField
-      DisplayWidth = 17
-      FieldName = 'telefono'
-      Size = 45
-    end
-    object TClientedireccion: TWideStringField
-      DisplayWidth = 16
-      FieldName = 'direccion'
-      Size = 45
-    end
-  end
-  object DSTCliente: TDataSource
-    DataSet = TCliente
-    Left = 384
-    Top = 88
-  end
   object TServicio: TADOTable
     Active = True
     Connection = Conexion
@@ -239,28 +188,260 @@ object DMtintoreria: TDMtintoreria
     TableName = 'catalogoservicio'
     Left = 448
     Top = 40
-    object TServicioidCatalogoServicio: TIntegerField
-      FieldName = 'idCatalogoServicio'
-      Visible = False
-    end
-    object TServicioprecio: TFloatField
-      FieldName = 'precio'
-    end
     object TServiciotipo: TWideStringField
       FieldName = 'tipo'
       Size = 45
     end
-    object TServicioporcentaje: TIntegerField
-      FieldName = 'porcentaje'
-    end
-    object TServiciominutos: TIntegerField
-      DisplayLabel = 'Tiempo Aproximado de Respuesta'
-      FieldName = 'minutos'
+    object TServicioidCatalogoServicio: TIntegerField
+      FieldName = 'idCatalogoServicio'
+      Visible = False
     end
   end
   object DSTServicio: TDataSource
     DataSet = TServicio
     Left = 448
     Top = 88
+  end
+  object TDatosServicios: TADOTable
+    Active = True
+    Connection = Conexion
+    CursorType = ctStatic
+    TableName = 'catalogoservicio'
+    Left = 384
+    Top = 216
+    object TDatosServiciosprecio: TFloatField
+      FieldName = 'precio'
+    end
+    object TDatosServiciostipo: TWideStringField
+      FieldName = 'tipo'
+      Size = 45
+    end
+    object TDatosServiciosporcentaje: TIntegerField
+      FieldName = 'porcentaje'
+    end
+    object TDatosServiciosidCatalogoServicio: TAutoIncField
+      FieldName = 'idCatalogoServicio'
+      ReadOnly = True
+    end
+  end
+  object DSTDatosServicios: TDataSource
+    DataSet = TDatosServicios
+    Left = 376
+    Top = 280
+  end
+  object TClientes: TADOTable
+    Active = True
+    Connection = Conexion
+    CursorType = ctStatic
+    TableName = 'catalogoservicio'
+    Left = 472
+    Top = 216
+    object TClientesprecio: TFloatField
+      FieldName = 'precio'
+    end
+    object TClientestipo: TWideStringField
+      FieldName = 'tipo'
+      Size = 45
+    end
+    object TClientesporcentaje: TIntegerField
+      FieldName = 'porcentaje'
+    end
+  end
+  object DSTClientes: TDataSource
+    DataSet = TClientes
+    Left = 472
+    Top = 288
+  end
+  object TCarrito: TADOTable
+    Active = True
+    Connection = Conexion
+    CursorType = ctStatic
+    TableName = 'carrito'
+    Left = 544
+    Top = 216
+    object TCarritoPrenda: TWideStringField
+      DisplayWidth = 19
+      FieldName = 'Prenda'
+      Size = 45
+    end
+    object TCarritoCantidad: TIntegerField
+      DisplayWidth = 12
+      FieldName = 'Cantidad'
+    end
+    object TCarritoTotalParcial: TFloatField
+      DisplayWidth = 12
+      FieldName = 'TotalParcial'
+    end
+  end
+  object DSTCarrito: TDataSource
+    DataSet = TCarrito
+    Left = 544
+    Top = 288
+  end
+  object Tentregas: TADOTable
+    Active = True
+    Connection = Conexion
+    CursorType = ctStatic
+    TableName = 'entrega'
+    Left = 608
+    Top = 216
+    object TentregasFecha: TDateField
+      FieldKind = fkLookup
+      FieldName = 'Fecha'
+      LookupDataSet = TventaServicio
+      LookupKeyFields = 'entrega_idEntrega'
+      LookupResultField = 'fecha'
+      KeyFields = 'idEntrega'
+      Lookup = True
+    end
+    object TentregasfechaEntrega: TDateTimeField
+      FieldName = 'fechaEntrega'
+    end
+    object TentregasCliente: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Cliente'
+      LookupDataSet = Tcliente
+      LookupKeyFields = 'idCliente'
+      LookupResultField = 'NombreCompleto'
+      KeyFields = 'cliente_idCliente'
+      Size = 50
+      Lookup = True
+    end
+    object TentregasDireccion: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Direccion'
+      LookupDataSet = Tcliente
+      LookupKeyFields = 'idCliente'
+      LookupResultField = 'direccion'
+      KeyFields = 'cliente_idCliente'
+      Size = 60
+      Lookup = True
+    end
+    object TentregasEstatus: TWideStringField
+      FieldName = 'Estatus'
+      Size = 45
+    end
+    object Tentregascliente_idCliente: TIntegerField
+      FieldName = 'cliente_idCliente'
+      Visible = False
+    end
+    object TentregasidEntrega: TAutoIncField
+      FieldName = 'idEntrega'
+      ReadOnly = True
+      Visible = False
+    end
+  end
+  object DSTentregas: TDataSource
+    DataSet = Tentregas
+    Left = 608
+    Top = 288
+  end
+  object QRegistrarVentaServicio: TADOQuery
+    Connection = Conexion
+    Parameters = <>
+    Left = 96
+    Top = 256
+  end
+  object QInsertaEntrega: TADOQuery
+    Parameters = <
+      item
+        Name = 'Fecha'
+        DataType = ftString
+        Size = -1
+        Value = Null
+      end>
+    Left = 136
+    Top = 192
+  end
+  object TventaServicio: TADOTable
+    Active = True
+    Connection = Conexion
+    CursorType = ctStatic
+    OnCalcFields = TventaServicioCalcFields
+    TableName = 'ventaservicio'
+    Left = 672
+    Top = 216
+    object TventaServicioNumeroVenta: TIntegerField
+      FieldKind = fkCalculated
+      FieldName = 'NumeroVenta'
+      Calculated = True
+    end
+    object TventaServiciofecha: TDateField
+      FieldName = 'fecha'
+    end
+    object TventaServicioidVentaServicio: TAutoIncField
+      FieldName = 'idVentaServicio'
+      ReadOnly = True
+      Visible = False
+    end
+    object TventaServicioentrega_idEntrega: TIntegerField
+      FieldName = 'entrega_idEntrega'
+      Visible = False
+    end
+  end
+  object DSTventaServicio: TDataSource
+    DataSet = TventaServicio
+    Left = 688
+    Top = 296
+  end
+  object Tcliente: TADOTable
+    Active = True
+    Connection = Conexion
+    CursorType = ctStatic
+    OnCalcFields = TclienteCalcFields
+    TableName = 'cliente'
+    Left = 208
+    Top = 264
+    object TclienteNombreCompleto: TWideStringField
+      FieldKind = fkCalculated
+      FieldName = 'NombreCompleto'
+      Calculated = True
+    end
+    object TclienteidCliente: TAutoIncField
+      FieldName = 'idCliente'
+      ReadOnly = True
+    end
+    object Tclientenombre: TWideStringField
+      FieldName = 'nombre'
+      Size = 45
+    end
+    object TclienteaPaterno: TWideStringField
+      FieldName = 'aPaterno'
+      Size = 45
+    end
+    object TclienteaMaterno: TWideStringField
+      FieldName = 'aMaterno'
+      Size = 45
+    end
+    object Tclientetelefono: TWideStringField
+      FieldName = 'telefono'
+      Size = 45
+    end
+    object Tclientedireccion: TWideStringField
+      FieldName = 'direccion'
+      Size = 45
+    end
+  end
+  object DSTCliente: TDataSource
+    DataSet = Tcliente
+    Left = 208
+    Top = 328
+  end
+  object ADOTable1: TADOTable
+    Connection = Conexion
+    CursorType = ctStatic
+    LockType = ltReadOnly
+    TableName = 'catalogoservicio'
+    Left = 552
+    Top = 88
+    object ADOTable1descripcion: TWideStringField
+      FieldName = 'descripcion'
+      Size = 80
+    end
+  end
+  object DataSource1: TDataSource
+    DataSet = ADOTable1
+    Left = 552
+    Top = 136
   end
 end

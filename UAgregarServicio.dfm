@@ -1,6 +1,7 @@
 object FServicioAgregar: TFServicioAgregar
   Left = 0
   Top = 0
+  Caption = 'FAgregarServicio'
   ClientHeight = 369
   ClientWidth = 304
   Color = clBtnFace
@@ -27,9 +28,22 @@ object FServicioAgregar: TFServicioAgregar
     Font.Style = []
     ParentFont = False
   end
+  object Label2: TLabel
+    Left = 8
+    Top = 50
+    Width = 93
+    Height = 20
+    Caption = 'Descripci'#243'n:*'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clInactiveCaptionText
+    Font.Height = -15
+    Font.Name = 'Open Sans'
+    Font.Style = []
+    ParentFont = False
+  end
   object Label3: TLabel
     Left = 8
-    Top = 65
+    Top = 105
     Width = 55
     Height = 20
     Caption = 'Precio:*'
@@ -42,7 +56,7 @@ object FServicioAgregar: TFServicioAgregar
   end
   object Label4: TLabel
     Left = 8
-    Top = 118
+    Top = 168
     Width = 42
     Height = 20
     Caption = 'Tipo:*'
@@ -55,7 +69,7 @@ object FServicioAgregar: TFServicioAgregar
   end
   object Label6: TLabel
     Left = 8
-    Top = 171
+    Top = 240
     Width = 85
     Height = 20
     Caption = 'Porcentaje:*'
@@ -66,33 +80,26 @@ object FServicioAgregar: TFServicioAgregar
     Font.Style = []
     ParentFont = False
   end
-  object Label2: TLabel
+  object ETDescripcion: TEdit
     Left = 8
-    Top = 235
-    Width = 171
-    Height = 20
-    Caption = 'Aproximado Respuesta:*'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clInactiveCaptionText
-    Font.Height = -15
-    Font.Name = 'Open Sans'
-    Font.Style = []
-    ParentFont = False
-  end
-  object ETPrecio: TEdit
-    Left = 8
-    Top = 91
+    Top = 76
     Width = 256
     Height = 21
     TabOrder = 0
-    OnKeyPress = ETPrecioKeyPress
   end
-  object ETTipo: TEdit
+  object ETPrecio: TEdit
     Left = 8
-    Top = 144
+    Top = 131
     Width = 256
     Height = 21
     TabOrder = 1
+  end
+  object ETTipo: TEdit
+    Left = 8
+    Top = 194
+    Width = 256
+    Height = 21
+    TabOrder = 2
   end
   object BTNGuardar: TBitBtn
     Left = 8
@@ -109,7 +116,7 @@ object FServicioAgregar: TFServicioAgregar
     Kind = bkOK
     ParentDoubleBuffered = False
     ParentFont = False
-    TabOrder = 2
+    TabOrder = 3
     OnClick = BTNGuardarClick
   end
   object BTNCancelar: TBitBtn
@@ -127,23 +134,14 @@ object FServicioAgregar: TFServicioAgregar
     Kind = bkCancel
     ParentDoubleBuffered = False
     ParentFont = False
-    TabOrder = 3
+    TabOrder = 4
     OnClick = BTNCancelarClick
   end
   object ETPorcetanje: TEdit
     Left = 8
-    Top = 197
-    Width = 256
-    Height = 21
-    TabOrder = 4
-    OnKeyPress = ETPorcetanjeKeyPress
-  end
-  object ETRespuesta: TEdit
-    Left = 8
-    Top = 261
+    Top = 266
     Width = 256
     Height = 21
     TabOrder = 5
-    OnKeyPress = ETRespuestaKeyPress
   end
 end

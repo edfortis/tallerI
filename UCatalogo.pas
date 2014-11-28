@@ -39,7 +39,7 @@ var
   FCatalogo: TFCatalogo;
   identificador:Integer;
 implementation
-        uses UDMtintoreria,UAgregarEmpleado,UUsuario,UCliente,UServicio,comobj;
+        uses UDMtintoreria,UAgregarEmpleado,UUsuario,UCliente,UServicio;
 {$R *.dfm}
 
 procedure TFCatalogo.borrarClick(Sender: TObject);
@@ -60,7 +60,6 @@ begin
      DMtintoreria.QGeneral.ExecSQL;
      DMtintoreria.TEmpleado.Requery;
   except
-     on E: EOleError do
     ShowMessage('Imposible borrar ahora este registro');
   end;
   ;
@@ -89,7 +88,6 @@ procedure TFCatalogo.Cliente1Click(Sender: TObject);
 begin
      Application.CreateForm(TFCliente, FCliente);
      FCliente.Show;
-     Close;
 end;
 
 procedure TFCatalogo.ReporteClick(Sender: TObject);

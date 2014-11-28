@@ -12,7 +12,8 @@ uses
   UCliente in 'UCliente.pas' {FCliente},
   UServicio in 'UServicio.pas' {FServicio},
   UAgregarServicio in 'UAgregarServicio.pas' {FServicioAgregar},
-  UAgregarCliente in 'UAgregarCliente.pas' {FAgregarCliente};
+  Entregas in 'Entregas.pas' {FEntregas},
+  UUServicios in 'UUServicios.pas' {FServicios};
 
 {$R *.res}
 
@@ -21,7 +22,8 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TDMtintoreria, DMtintoreria);
   Application.CreateForm(TFPrincipal, FPrincipal);
-  //Application.CreateForm(TFAgregarCliente, FAgregarCliente);
+  Application.CreateForm(TFEntregas, FEntregas);
+  Application.CreateForm(TFServicios, FServicios);
   // Application.CreateForm(TFServicio, FServicio);
   //Application.CreateForm(TFServicioAgregar, FServicioAgregar);
   //Application.CreateForm(TFCliente, FCliente);

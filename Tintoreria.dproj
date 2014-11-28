@@ -74,8 +74,11 @@
 			<DCCReference Include="UAgregarServicio.pas">
 				<Form>FServicioAgregar</Form>
 			</DCCReference>
-			<DCCReference Include="UAgregarCliente.pas">
-				<Form>FAgregarCliente</Form>
+			<DCCReference Include="Entregas.pas">
+				<Form>FEntregas</Form>
+			</DCCReference>
+			<DCCReference Include="UUServicios.pas">
+				<Form>FServicios</Form>
 			</DCCReference>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>

@@ -27,15 +27,6 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure BTNCancelarClick(Sender: TObject);
-    procedure ETNombreKeyPress(Sender: TObject; var Key: Char);
-
-    procedure ETPaternoKeyPress(Sender: TObject; var Key: Char);
-
-    procedure ETMaternoKeyPress(Sender: TObject; var Key: Char);
-
-    procedure ETTelefonoKeyPress(Sender: TObject; var Key: Char);
-
-
   private
     { Private declarations }
   public
@@ -54,9 +45,6 @@ var
 cadena:String;
 sexo : String;
 begin
-  if ETNombre.Text = '' then
-    ShowMessage('Campo vacio');
-  ;
   if RSexo.ItemIndex = 0 then
   begin
      sexo:='H';
@@ -80,47 +68,6 @@ begin
   Close;
 
 end;
-
-
-
-procedure TUAgregar.ETMaternoKeyPress(Sender: TObject; var Key: Char);
-begin
- if (Key = #8)
-or ((Key >= 'a') and (Key <= 'z'))
-or ((Key >= 'A') and (Key <= 'Z')) then
-else abort;
-end;
-
-procedure TUAgregar.ETNombreKeyPress(Sender: TObject; var Key: Char);
-
-// allow only alpha input & backspace
-begin
-if (Key = #8)
-or ((Key >= 'a') and (Key <= 'z'))
-or ((Key >= 'A') and (Key <= 'Z')) then
-else abort;
-end;
-
-
-
-procedure TUAgregar.ETPaternoKeyPress(Sender: TObject; var Key: Char);
-begin
- // allow only alpha input & backspace
-begin
-if (Key = #8)
-or ((Key >= 'a') and (Key <= 'z'))
-or ((Key >= 'A') and (Key <= 'Z')) then
-else abort;
-end;
-end;
-
-procedure TUAgregar.ETTelefonoKeyPress(Sender: TObject; var Key: Char);
-begin
-if (Key = #8)
-or ((Key >= '0') and (Key <= '9')) then
-else abort;
-end;
-
 procedure TUAgregar.BTNCancelarClick(Sender: TObject);
 begin
   Close;

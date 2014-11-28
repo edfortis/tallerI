@@ -44,7 +44,7 @@ object FServicio: TFServicio
   end
   object modificar: TImage
     Left = 67
-    Top = 52
+    Top = 49
     Width = 32
     Height = 32
     Cursor = crHandPoint
@@ -104,7 +104,7 @@ object FServicio: TFServicio
     Left = 17
     Top = 90
     Width = 774
-    Height = 167
+    Height = 97
     DataSource = DMtintoreria.DSTServicio
     ParentColor = True
     ReadOnly = True

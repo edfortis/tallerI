@@ -14,6 +14,7 @@ type
     DBGEmpleado: TDBGrid;
     BTNBuscar: TBitBtn;
     EBuscar: TEdit;
+    Reporte: TImage;
     MainMenu1: TMainMenu;
     Catlogos1: TMenuItem;
     Empleado1: TMenuItem;
@@ -24,8 +25,6 @@ type
     procedure modificarClick(Sender: TObject);
     procedure borrarClick(Sender: TObject);
     procedure Empleado1Click(Sender: TObject);
-    procedure Cliente1Click(Sender: TObject);
-    procedure Servicio1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -37,7 +36,7 @@ var
   bandera:Integer;
   identificador:Integer;
 implementation
-      uses UAgregarUsuario,UDMtintoreria,UCatalogo,UCliente,UServicio;
+      uses UAgregarUsuario, UDMtintoreria,UCatalogo;
 {$R *.dfm}
 
 procedure TFUsuario.agregarClick(Sender: TObject);
@@ -70,13 +69,6 @@ begin
 
 end;
 
-procedure TFUsuario.Cliente1Click(Sender: TObject);
-begin
-  Application.CreateForm(TFCliente, FCliente);
-  FCliente.Show;
-  Close;
-end;
-
 procedure TFUsuario.Empleado1Click(Sender: TObject);
 begin
   Application.CreateForm(TFCatalogo, FCatalogo);
@@ -92,13 +84,6 @@ begin
    FAgregarUsuario.Caption:='Modificar Usuario';
    FAgregarUsuario.Show;
    Close;
-end;
-
-procedure TFUsuario.Servicio1Click(Sender: TObject);
-begin
-    Application.CreateForm(TFServicio, FServicio);
-    FServicio.Show;
-    Close;
 end;
 
 end.

@@ -19,6 +19,8 @@ type
 
     procedure FormShow(Sender: TObject);
     procedure Image1Click(Sender: TObject);
+    procedure Image3Click(Sender: TObject);
+    procedure Image2Click(Sender: TObject);
 
   private
     { Private declarations }
@@ -30,7 +32,7 @@ var
   FPrincipal: TFPrincipal;
 
 implementation
-        uses  ULogin,UDMtintoreria,UCatalogo;
+        uses  ULogin,UDMtintoreria,UCatalogo, UUservicios, Entregas;
 {$R *.dfm}
 
 
@@ -48,6 +50,22 @@ procedure TFPrincipal.Image1Click(Sender: TObject);
 begin
   Application.CreateForm(TFCatalogo, FCatalogo);
   FCatalogo.Show;
+end;
+
+procedure TFPrincipal.Image2Click(Sender: TObject);
+begin
+        Application.CreateForm(TFEntregas, FEntregas);
+        FEntregas.Show;
+        DMtintoreria.Tentregas.Close;
+        DMtintoreria.Tentregas.Open;
+end;
+
+procedure TFPrincipal.Image3Click(Sender: TObject);
+begin
+       Application.CreateForm(TFServicios, FServicios);
+       FServicios.Show;
+         DMtintoreria.TCarrito.Last;
+           DMtintoreria.TventaServicio.Last;
 end;
 
 end.
