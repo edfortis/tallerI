@@ -78,7 +78,7 @@ begin
   bandera:=1;
   inde:=DMtintoreria.TServicio.FieldByName('idCatalogoServicio').AsInteger;
   Application.CreateForm(TFServicioAgregar, FServicioAgregar);
-  FServicioAgregar.Caption:='Agregar Servicio';
+  FServicioAgregar.Caption:='Modificar Servicio';
   FServicioAgregar.Show;
   Close;
 end;

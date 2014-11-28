@@ -1,8 +1,8 @@
 ﻿object FAgregarUsuario: TFAgregarUsuario
   Left = 0
   Top = 0
-  ClientHeight = 335
-  ClientWidth = 457
+  ClientHeight = 341
+  ClientWidth = 324
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -84,21 +84,26 @@
     Top = 138
     Width = 248
     Height = 21
-    TabOrder = 0
+    MaxLength = 45
+    TabOrder = 1
   end
   object EContraseañ: TEdit
     Left = 40
     Top = 191
     Width = 248
     Height = 21
-    TabOrder = 1
+    MaxLength = 45
+    PasswordChar = '*'
+    TabOrder = 2
   end
-  object TConfirmarCon: TEdit
+  object EConfirmarCon: TEdit
     Left = 40
     Top = 244
     Width = 248
     Height = 21
-    TabOrder = 2
+    MaxLength = 45
+    PasswordChar = '*'
+    TabOrder = 3
   end
   object BitBtn1: TBitBtn
     Left = 40
@@ -109,7 +114,7 @@
     DoubleBuffered = True
     Kind = bkOK
     ParentDoubleBuffered = False
-    TabOrder = 3
+    TabOrder = 4
     OnClick = BitBtn1Click
   end
   object BitBtn2: TBitBtn
@@ -121,7 +126,7 @@
     DoubleBuffered = True
     Kind = bkCancel
     ParentDoubleBuffered = False
-    TabOrder = 4
+    TabOrder = 5
     OnClick = BitBtn2Click
   end
   object ComboEmpleados: TDBLookupComboBox
@@ -132,6 +137,6 @@
     KeyField = 'idEmpleado'
     ListField = 'nombreCompleto'
     ListSource = DMtintoreria.DSTEmpleado
-    TabOrder = 5
+    TabOrder = 0
   end
 end

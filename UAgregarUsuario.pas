@@ -14,7 +14,7 @@ type
     Label2: TLabel;
     EContraseañ: TEdit;
     Label3: TLabel;
-    TConfirmarCon: TEdit;
+    EConfirmarCon: TEdit;
     Label4: TLabel;
     BitBtn1: TBitBtn;
     BitBtn2: TBitBtn;
@@ -23,6 +23,7 @@ type
     procedure BitBtn2Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
+
   private
     { Private declarations }
   public
@@ -40,6 +41,14 @@ procedure TFAgregarUsuario.BitBtn1Click(Sender: TObject);
 var cadena:String;
 
 begin
+   if (EUsuario.Text = '') or (EContraseañ.Text = '')  then
+   begin
+       ShowMessage('Campos vacios');
+   end
+   else
+   begin
+   if EContraseañ.Text = EConfirmarCon.Text then
+   begin
    if UUsuario.bandera = 0 then
    begin
      cadena:= 'INSERT INTO `tintoreria`.`usuario` (`nombre`,`contrasena`,`empleado_idEmpleado`) VALUES ('+QuotedStr(EUsuario.Text)+','+QuotedStr(EContraseañ.Text)+','+ IntToStr( ComboEmpleados.KeyValue)+')';
@@ -53,13 +62,20 @@ begin
    DMtintoreria.QGeneral.ExecSQL;
    DMtintoreria.TUsuario.Requery;
    Close;
-
+   end
+   else
+   begin
+    ShowMessage('Contraseña no coincide');
+   end;
+   end;
 end;
 
 procedure TFAgregarUsuario.BitBtn2Click(Sender: TObject);
 begin
   Close;
 end;
+
+
 
 procedure TFAgregarUsuario.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
@@ -87,5 +103,6 @@ begin
 
   end;
 end;
+
 
 end.
