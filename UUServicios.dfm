@@ -101,35 +101,29 @@ object FServicios: TFServicios
       Height = 13
       Caption = 'Servicio'
     end
-    object ETotal: TEdit
-      Left = 16
-      Top = 165
-      Width = 121
-      Height = 21
-      TabOrder = 1
-    end
     object DBLServicio: TDBLookupComboBox
       Left = 16
       Top = 107
       Width = 201
       Height = 21
-      KeyField = 'tipo'
+      KeyField = 'idCatalogoServicio'
+      ListField = 'tipo'
       ListSource = DMtintoreria.DSTServicio
       TabOrder = 0
     end
     object GroupBox2: TGroupBox
       Left = 0
-      Top = 256
+      Top = 261
       Width = 328
       Height = 262
       Caption = 'Informacion entrega'
-      TabOrder = 2
+      TabOrder = 1
       object Label7: TLabel
         Left = 28
         Top = 154
-        Width = 70
+        Width = 136
         Height = 13
-        Caption = 'Fecha entrega'
+        Caption = 'Fecha entrega = AA/MM/DD'
       end
       object Label8: TLabel
         Left = 28
@@ -138,26 +132,12 @@ object FServicios: TFServicios
         Height = 13
         Caption = 'Nombre empleado'
       end
-      object Label9: TLabel
-        Left = 184
-        Top = 45
-        Width = 78
-        Height = 13
-        Caption = 'Apellido paterno'
-      end
       object Label10: TLabel
         Left = 28
         Top = 101
         Width = 88
         Height = 13
         Caption = 'Nombre del cliente'
-      end
-      object Label11: TLabel
-        Left = 184
-        Top = 101
-        Width = 112
-        Height = 13
-        Caption = 'Apellido paterno cliente'
       end
       object lblID: TLabel
         Left = 184
@@ -170,35 +150,7 @@ object FServicios: TFServicios
         Top = 173
         Width = 121
         Height = 21
-        TabOrder = 4
-      end
-      object EdNombreE: TEdit
-        Left = 28
-        Top = 64
-        Width = 121
-        Height = 21
         TabOrder = 0
-      end
-      object EdApellidoP: TEdit
-        Left = 181
-        Top = 64
-        Width = 121
-        Height = 21
-        TabOrder = 1
-      end
-      object EdNombreCliente: TEdit
-        Left = 28
-        Top = 120
-        Width = 121
-        Height = 21
-        TabOrder = 2
-      end
-      object EdApellidoPaternoCliente: TEdit
-        Left = 181
-        Top = 120
-        Width = 121
-        Height = 21
-        TabOrder = 3
       end
       object BtnRevertir: TButton
         Left = 168
@@ -206,7 +158,7 @@ object FServicios: TFServicios
         Width = 75
         Height = 25
         Caption = 'Limpiar'
-        TabOrder = 6
+        TabOrder = 1
         OnClick = BtnRevertirClick
       end
       object BtbAgregar: TBitBtn
@@ -217,13 +169,40 @@ object FServicios: TFServicios
         Caption = 'Agregar'
         DoubleBuffered = True
         ParentDoubleBuffered = False
-        TabOrder = 5
+        TabOrder = 2
         OnClick = BtbAgregarClick
       end
+      object DBEmpleado: TDBLookupComboBox
+        Left = 28
+        Top = 74
+        Width = 145
+        Height = 21
+        KeyField = 'idEmpleado'
+        ListField = 'nombreCompleto'
+        ListSource = DMtintoreria.DSTEmpleado
+        TabOrder = 3
+      end
+      object DBLCliente: TDBLookupComboBox
+        Left = 28
+        Top = 127
+        Width = 145
+        Height = 21
+        KeyField = 'idCliente'
+        ListField = 'NombreCompleto'
+        ListSource = DMtintoreria.DSTCliente
+        TabOrder = 4
+      end
+    end
+    object EPrenda: TEdit
+      Left = 19
+      Top = 59
+      Width = 121
+      Height = 21
+      TabOrder = 2
     end
     object btnAgregar: TBitBtn
-      Left = 90
-      Top = 208
+      Left = 106
+      Top = 197
       Width = 97
       Height = 42
       Caption = 'Agregar carrito'
@@ -232,13 +211,11 @@ object FServicios: TFServicios
       TabOrder = 3
       OnClick = btnAgregarClick
     end
-    object DBLPrenda: TDBLookupComboBox
+    object ETotal: TEdit
       Left = 16
-      Top = 61
-      Width = 201
+      Top = 165
+      Width = 121
       Height = 21
-      KeyField = 'descripcion'
-      ListSource = DMtintoreria.DataSource1
       TabOrder = 4
     end
   end
@@ -254,7 +231,7 @@ object FServicios: TFServicios
       Top = 13
       Width = 409
       Height = 148
-      DataSource = DMtintoreria.DSTDatosServicios
+      DataSource = DMtintoreria.DSTCarrito
       TabOrder = 0
       TitleFont.Charset = DEFAULT_CHARSET
       TitleFont.Color = clWindowText
@@ -268,7 +245,7 @@ object FServicios: TFServicios
     Top = 398
     Width = 121
     Height = 21
-    TabOrder = 6
+    TabOrder = 5
   end
   object ECambio: TEdit
     Left = 496
@@ -277,21 +254,12 @@ object FServicios: TFServicios
     Height = 21
     TabOrder = 2
   end
-  object BtnCobrar: TButton
-    Left = 344
-    Top = 455
-    Width = 109
-    Height = 36
-    Caption = 'Cobrar'
-    TabOrder = 3
-    OnClick = BtnCobrarClick
-  end
   object EEfectivo: TEdit
     Left = 344
     Top = 398
     Width = 121
     Height = 21
-    TabOrder = 5
+    TabOrder = 4
   end
   object DBVentas: TDBGrid
     Left = 342
@@ -299,11 +267,22 @@ object FServicios: TFServicios
     Width = 409
     Height = 148
     DataSource = DMtintoreria.DSTventaServicio
-    TabOrder = 4
+    TabOrder = 3
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
     TitleFont.Height = -11
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
+  end
+  object btnCobrar: TBitBtn
+    Left = 360
+    Top = 456
+    Width = 75
+    Height = 25
+    Caption = 'Cobrar'
+    DoubleBuffered = True
+    ParentDoubleBuffered = False
+    TabOrder = 6
+    OnClick = BtnCobrarClick
   end
 end

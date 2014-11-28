@@ -16,7 +16,7 @@ object FEntregas: TFEntregas
   object DBGrid1: TDBGrid
     Left = 0
     Top = 8
-    Width = 273
+    Width = 729
     Height = 177
     DataSource = DMtintoreria.DSTentregas
     TabOrder = 0

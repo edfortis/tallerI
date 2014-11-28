@@ -56,12 +56,16 @@ procedure TFPrincipal.Image2Click(Sender: TObject);
 begin
         Application.CreateForm(TFEntregas, FEntregas);
         FEntregas.Show;
+        DMtintoreria.Tentregas.Close;
+        DMtintoreria.Tentregas.Open;
 end;
 
 procedure TFPrincipal.Image3Click(Sender: TObject);
 begin
        Application.CreateForm(TFServicios, FServicios);
        FServicios.Show;
+         DMtintoreria.TCarrito.Last;
+           DMtintoreria.TventaServicio.Last;
 end;
 
 end.

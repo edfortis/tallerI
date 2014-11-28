@@ -38,13 +38,21 @@ CREATE TABLE IF NOT EXISTS `tintoreria`.`usuario` (
 ENGINE = InnoDB;
 
 
--- -----------------------------------------------------
--- Table `tintoreria`.`entrega`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `tintoreria`.`entrega` (
-  `idEntrega` INT NOT NULL AUTO_INCREMENT,
-  `fechaEntrega` DATETIME NOT NULL,
-  PRIMARY KEY (`idEntrega`))
+-- -----------------------------------------------------
+-- Table `tintoreria`.`entrega`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `tintoreria`.`entrega` (
+  `idEntrega` INT NOT NULL AUTO_INCREMENT ,
+  `fechaEntrega` Date NOT NULL ,
+  `cliente_idCliente` INT NOT NULL ,
+`Estatus` VARCHAR(45) NOT NULL ,
+  PRIMARY KEY (`idEntrega`) ,
+  INDEX `fk_entrega_cliente1_idx` (`cliente_idCliente` ASC) ,
+  CONSTRAINT `fk_entrega_cliente1`
+    FOREIGN KEY (`cliente_idCliente` )
+    REFERENCES `tintoreria`.`cliente` (`idCliente` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
@@ -98,7 +106,6 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `tintoreria`.`catalogoServicio` (
   `idCatalogoServicio` INT NOT NULL AUTO_INCREMENT,
-  `descripcion` TEXT NULL,
   `precio` DOUBLE NOT NULL,
   `tipo` VARCHAR(45) NOT NULL,
   `porcentaje` int NULL,
@@ -113,6 +120,9 @@ CREATE TABLE IF NOT EXISTS `tintoreria`.`carrito` (
   `idCarrito` INT NOT NULL AUTO_INCREMENT,
   `catalogoServicio_idCatalogoServicio` INT NOT NULL,
   `ventaServicio_idVentaServicio` INT NOT NULL,
+`Prenda` VARCHAR(45) NOT NULL,
+  `Cantidad` INT NOT NULL,
+ `TotalParcial` DOUBLE NOT NULL,
 	`Cantidad` INT NOT NULL,
   PRIMARY KEY (`idCarrito`))
 ENGINE = InnoDB;

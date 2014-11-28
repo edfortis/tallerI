@@ -94,11 +94,11 @@ object DMtintoreria: TDMtintoreria
     Left = 256
     Top = 88
   end
-  object RvStados: TRvDataSetConnection
+  object RvSEntregas: TRvDataSetConnection
     RuntimeVisibility = rtDeveloper
-    DataSet = TEmpleado
-    Left = 528
-    Top = 24
+    DataSet = Tentregas
+    Left = 280
+    Top = 392
   end
   object RvProject1: TRvProject
     Engine = RvSystem1
@@ -111,16 +111,16 @@ object DMtintoreria: TDMtintoreria
     FileExtension = '*.pdf'
     DocInfo.Creator = 'Rave Reports (http://www.nevrona.com/rave)'
     DocInfo.Producer = 'Nevrona Designs'
-    Left = 592
-    Top = 24
+    Left = 368
+    Top = 376
   end
   object RvRenderText1: TRvRenderText
     DisplayName = 'Plain Text (TXT)'
     FileExtension = '*.txt'
     CPI = 10.000000000000000000
     LPI = 6.000000000000000000
-    Left = 656
-    Top = 24
+    Left = 464
+    Top = 376
   end
   object RvSystem1: TRvSystem
     TitleSetup = 'Output Options'
@@ -192,6 +192,10 @@ object DMtintoreria: TDMtintoreria
       FieldName = 'tipo'
       Size = 45
     end
+    object TServicioidCatalogoServicio: TIntegerField
+      FieldName = 'idCatalogoServicio'
+      Visible = False
+    end
   end
   object DSTServicio: TDataSource
     DataSet = TServicio
@@ -205,10 +209,6 @@ object DMtintoreria: TDMtintoreria
     TableName = 'catalogoservicio'
     Left = 384
     Top = 216
-    object TDatosServiciosdescripcion: TWideStringField
-      FieldName = 'descripcion'
-      Size = 80
-    end
     object TDatosServiciosprecio: TFloatField
       FieldName = 'precio'
     end
@@ -219,6 +219,10 @@ object DMtintoreria: TDMtintoreria
     object TDatosServiciosporcentaje: TIntegerField
       FieldName = 'porcentaje'
     end
+    object TDatosServiciosidCatalogoServicio: TAutoIncField
+      FieldName = 'idCatalogoServicio'
+      ReadOnly = True
+    end
   end
   object DSTDatosServicios: TDataSource
     DataSet = TDatosServicios
@@ -226,18 +230,21 @@ object DMtintoreria: TDMtintoreria
     Top = 280
   end
   object TClientes: TADOTable
+    Active = True
     Connection = Conexion
     CursorType = ctStatic
     TableName = 'catalogoservicio'
     Left = 472
     Top = 216
-    object TClientesdescripcion: TWideMemoField
-      FieldName = 'descripcion'
-      BlobType = ftWideMemo
+    object TClientesprecio: TFloatField
+      FieldName = 'precio'
     end
     object TClientestipo: TWideStringField
       FieldName = 'tipo'
       Size = 45
+    end
+    object TClientesporcentaje: TIntegerField
+      FieldName = 'porcentaje'
     end
   end
   object DSTClientes: TDataSource
@@ -252,6 +259,19 @@ object DMtintoreria: TDMtintoreria
     TableName = 'carrito'
     Left = 544
     Top = 216
+    object TCarritoPrenda: TWideStringField
+      DisplayWidth = 19
+      FieldName = 'Prenda'
+      Size = 45
+    end
+    object TCarritoCantidad: TIntegerField
+      DisplayWidth = 12
+      FieldName = 'Cantidad'
+    end
+    object TCarritoTotalParcial: TFloatField
+      DisplayWidth = 12
+      FieldName = 'TotalParcial'
+    end
   end
   object DSTCarrito: TDataSource
     DataSet = TCarrito
@@ -265,18 +285,36 @@ object DMtintoreria: TDMtintoreria
     TableName = 'entrega'
     Left = 608
     Top = 216
-    object TentregasidEntrega: TAutoIncField
-      FieldName = 'idEntrega'
-      ReadOnly = True
-      Visible = False
-    end
-    object TentregasNumeroentrega: TIntegerField
-      FieldKind = fkCalculated
-      FieldName = 'Numero entrega'
-      Calculated = True
-    end
     object TentregasfechaEntrega: TDateTimeField
       FieldName = 'fechaEntrega'
+    end
+    object TentregasCliente: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Cliente'
+      LookupDataSet = Tcliente
+      LookupKeyFields = 'idCliente'
+      LookupResultField = 'NombreCompleto'
+      KeyFields = 'cliente_idCliente'
+      Size = 50
+      Lookup = True
+    end
+    object TentregasDireccion: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Direccion'
+      LookupDataSet = Tcliente
+      LookupKeyFields = 'idCliente'
+      LookupResultField = 'direccion'
+      KeyFields = 'cliente_idCliente'
+      Size = 60
+      Lookup = True
+    end
+    object TentregasEstatus: TWideStringField
+      FieldName = 'Estatus'
+      Size = 45
+    end
+    object Tentregascliente_idCliente: TIntegerField
+      FieldName = 'cliente_idCliente'
+      Visible = False
     end
   end
   object DSTentregas: TDataSource
@@ -332,15 +370,29 @@ object DMtintoreria: TDMtintoreria
     Active = True
     Connection = Conexion
     CursorType = ctStatic
+    OnCalcFields = TclienteCalcFields
     TableName = 'cliente'
     Left = 208
     Top = 264
+    object TclienteNombreCompleto: TWideStringField
+      FieldKind = fkCalculated
+      FieldName = 'NombreCompleto'
+      Calculated = True
+    end
+    object TclienteidCliente: TAutoIncField
+      FieldName = 'idCliente'
+      ReadOnly = True
+    end
     object Tclientenombre: TWideStringField
       FieldName = 'nombre'
       Size = 45
     end
     object TclienteaPaterno: TWideStringField
       FieldName = 'aPaterno'
+      Size = 45
+    end
+    object TclienteaMaterno: TWideStringField
+      FieldName = 'aMaterno'
       Size = 45
     end
     object Tclientetelefono: TWideStringField
@@ -351,20 +403,6 @@ object DMtintoreria: TDMtintoreria
       FieldName = 'direccion'
       Size = 45
     end
-    object TclienteNombreCompleto: TWideStringField
-      FieldKind = fkCalculated
-      FieldName = 'NombreCompleto'
-      Calculated = True
-    end
-    object TclienteidCliente: TAutoIncField
-      FieldName = 'idCliente'
-      ReadOnly = True
-      Visible = False
-    end
-    object TclienteaMaterno: TWideStringField
-      FieldName = 'aMaterno'
-      Size = 45
-    end
   end
   object DSTCliente: TDataSource
     DataSet = Tcliente
@@ -372,7 +410,6 @@ object DMtintoreria: TDMtintoreria
     Top = 328
   end
   object ADOTable1: TADOTable
-    Active = True
     Connection = Conexion
     CursorType = ctStatic
     LockType = ltReadOnly
