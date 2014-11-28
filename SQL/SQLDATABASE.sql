@@ -51,7 +51,7 @@ CREATE  TABLE IF NOT EXISTS `tintoreria`.`entrega` (
   `fechaEntrega` Date NOT NULL ,
 
   `cliente_idCliente` INT NOT NULL ,
-`Estatus` VARCHAR(45) NOT NULL ,
+`Estatus` VARCHAR(45) ,
 
   PRIMARY KEY (`idEntrega`) ,
 
